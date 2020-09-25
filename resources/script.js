@@ -12,7 +12,7 @@ window.onload = (event) => {
       try{
         const menuObj = JSON.parse(this.responseText)
         // Add menu objects to html file
-        const menuList = document.querySelector('#navMenues')
+        const menuList = document.querySelector('#nav-menues')
 
         for(i=0; i< menuObj.length; i++){
           menuList.appendChild(createMenu(menuObj[i].label, menuObj[i].link))
@@ -40,7 +40,7 @@ window.onload = (event) => {
     const menuElement = document.createElement('li')
     const menuLink = document.createElement('a')
     menuLink.href = "#"
-    menuLink.className += "menuLink"
+    menuLink.className += "menu-link"
     menuLink.textContent = content
     menuElement.appendChild(menuLink)
     return menuElement
@@ -48,7 +48,7 @@ window.onload = (event) => {
 
   // Event handler function for menu
   function menuEventHandler(menuObj){
-    const menuLinks = document.querySelectorAll(".menuLink")
+    const menuLinks = document.querySelectorAll(".menu-link")
     obj = menuObj
 
     for( i=0; i < menuLinks.length; i++){
