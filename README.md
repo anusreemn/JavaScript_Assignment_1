@@ -14,12 +14,13 @@ This project aims to create a dynamic website out of the static 'RMedia' website
 
 ## Tasks
 1. Create JSON files for:
-   * - [ ] Menu
-   * - [ ] Home page:
-   * - [ ] Table headings
-   * - [ ] Blog posts
+   * - [x] Menu
+   * - [x] Home page:
+   * - [x] Table headings
+   * - [x] Blog posts
 2. - [ ] Create 404 page
-3. - [ ] Menu section
+3. - [x] Menu section
+4. - [x] Blog Posts
 4. - [ ] Home 
 5. - [ ] Contact
 6. - [ ] About/Services

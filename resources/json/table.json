@@ -1,6 +1,3 @@
 {
-  "headOne":"Lorem",
-  "headTwo": "Lorem",
-  "headThree": "Lorem",
-  "headFour": "Lorem"
+  "heading":["Lorem","Lorem2","Lorem","Lorem"]
 }
