@@ -1,0 +1,53 @@
+@media only screen and (max-width: 1200px){
+  .container{
+    max-width: 998px;
+  }
+}
+
+@media only screen and (max-width: 768px){
+
+  .contentSection{
+    display: flex;
+    height: 1500px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .leftSection,
+  .middleSection,
+  .rightSection{
+    width: 100vw;
+  }
+
+  .leftSection,
+  .rightSection{ height: 100vh; }
+  .middleSection{ height: 1000px;}
+
+
+  .middleSection{
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .topSection{
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .contentArea{
+    width: 100vw;
+  }
+  .imageArea{ 
+    text-align: center;
+    width: 100vw;
+  }
+ 
+  
+  header h1{
+  width: 100px;
+  height: auto;
+  display: block;
+}
+#search{
+  display: block;
+}
+
+}

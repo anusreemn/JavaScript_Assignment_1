@@ -1,0 +1,18 @@
+[
+  {
+    "label":"Home",
+    "status":"active"
+  },
+  {
+    "label":"About",
+    "status":"active"
+  },
+  {
+    "label": "Services",
+    "status": "404"
+  },
+  {
+    "label": "Contact",
+    "status": "active"
+  }
+]
