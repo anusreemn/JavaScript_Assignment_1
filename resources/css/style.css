@@ -56,7 +56,9 @@ header h1{
 /*-------------------------*/
 /*------ CONTENTS ---------*/
 /*-------------------------*/
-
+.notFound{
+  font-size: 2em !important;
+}
 .contentSection{ 
   height: calc(100vh + 100px);
   display: flex;
@@ -220,3 +222,19 @@ footer ul li{
   padding: 10px;
 }
 
+/*-------------------------*/
+/*------ CONTACT FORM -----*/
+/*-------------------------*/
+.form{
+  display: flex;
+  width: 60%;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+input,
+textarea,
+.formBtn{
+  padding: 10px;
+  margin: 10px;
+}

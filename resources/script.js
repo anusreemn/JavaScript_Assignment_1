@@ -15,7 +15,7 @@ window.onload = (event) => {
         const menuList = document.querySelector('#navMenues')
 
         for(i=0; i< menuObj.length; i++){
-          menuList.appendChild(createMenu(menuObj[i].label))
+          menuList.appendChild(createMenu(menuObj[i].label, menuObj[i].link))
 
           if(i == (menuObj.length)-1){
             menuEventHandler(menuObj)
@@ -36,9 +36,10 @@ window.onload = (event) => {
   menuRequest.send()
 
   // Function for creating menu elements
-  function createMenu(content) {
+  function createMenu(content,link) {
     const menuElement = document.createElement('li')
     const menuLink = document.createElement('a')
+    menuLink.href = "#"
     menuLink.className += "menuLink"
     menuLink.textContent = content
     menuElement.appendChild(menuLink)
@@ -51,8 +52,21 @@ window.onload = (event) => {
     obj = menuObj
 
     for( i=0; i < menuLinks.length; i++){
-      menuLinks[i].addEventListener('click',function(){
-        console.log(menuLinks[i])
+      menuLinks[i].addEventListener('click',function(event){
+        var linktext = event.target.textContent
+        console.log(linktext)
+        for(j=0; j<menuLinks.length; j++){
+          if(linktext == obj[j].label){
+            var state = obj[j].status
+            if(state){
+              window.open(obj[j].link, "_self")
+            }
+            else{
+              window.open("../404.html", "_self")
+            }
+          }
+        }
+
       })
     }
 
