@@ -68,10 +68,58 @@ window.onload = (event) => {
         }
 
       })
-    }
-
-      
+    }    
   }
+
+  // Blog post section
+   const blogRequest = new XMLHttpRequest();
+
+   blogRequest.onload = function () {
+     if (this.status === 200) {
+       try {
+         const blogObj = JSON.parse(this.responseText);
+
+         // Add blog post to html
+         const postLists = document.querySelector(".posts");
+
+         function createPost(tittle, link) {
+           const postElement = document.createElement("li");
+           const postLink = document.createElement("a");
+
+           const postLinkDiv = document.createElement("div");
+           postLinkDiv.className += "post-image-div";
+
+           const postText = document.createElement("p");
+           postText.className += "post-info";
+           postText.textContent = tittle;
+
+           const postImg = document.createElement("img");
+           postImg.src = link;
+
+           postLinkDiv.appendChild(postText);
+           postLinkDiv.appendChild(postImg);
+           postLink.appendChild(postLinkDiv);
+           postElement.appendChild(postLink);
+
+           return postElement;
+         }
+
+         for (i = 0; i <= blogObj.length; i++) {
+           postLists.appendChild(
+             createPost(blogObj[i].tittle, blogObj[i].image)
+           );
+         }
+       } catch {
+         console.warn("JSON not parsed");
+       }
+     } else {
+       console.warn("File not found");
+     }
+   };
+
+   blogRequest.open("get", "resources/json/blogpost.json");
+   blogRequest.send();
+
 
     
 }
