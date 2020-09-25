@@ -20,7 +20,7 @@ This project aims to create a dynamic website out of the static 'RMedia' website
    * - [x] Blog posts
 2. - [ ] Create 404 page
 3. - [x] Menu section
-4. - [x] Blog Posts
+4. - [ ] Blog Posts
 4. - [ ] Home 
 5. - [ ] Contact
 6. - [ ] About/Services
