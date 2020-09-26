@@ -249,3 +249,23 @@ textarea,
   padding: 10px;
   margin: 10px;
 }
+
+
+.not-found{
+  text-align: center;
+  margin-top: 50px;
+  font-size: 50px;
+  opacity: 0.5;
+}
+
+.not-found-text{
+  text-align: center;
+}
+
+.not-found-image{
+  width: 100px;
+  height: auto;
+  margin: 30px auto;
+  opacity: 0.5;
+
+}
