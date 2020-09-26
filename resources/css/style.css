@@ -117,7 +117,16 @@ nav ul li a:hover{
 }
 
 .content-area h2{ padding-bottom: 20px;}
-.content-area p{ padding: 10px 0;}
+.content-area p{ 
+  padding: 10px 0;
+  /* height: 200px; */
+  overflow: hidden;
+}
+.read-more,
+.read-less{ 
+  margin-top: 20px;
+  display: none;
+}
 
 .image-area{ 
   /* float: right; */
@@ -152,7 +161,9 @@ td{
 
 td:last-child{ text-align: center; }
 
-table button{ padding: 5px;}
+table button,
+.read-more,
+.read-less{ padding: 5px;}
 
 /*---- Right Section -------*/
 .right-section{

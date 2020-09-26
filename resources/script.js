@@ -152,7 +152,7 @@ window.onload = (event) => {
 
   //Debugging fn
   function check(){
-    console.log("Check")
+    console.log("foo")
   }
 
 

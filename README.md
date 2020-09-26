@@ -18,12 +18,12 @@ This project aims to create a dynamic website out of the static 'RMedia' website
    * - [x] Home page:
    * - [x] Table headings
    * - [x] Blog posts
-2. - [ ] Create 404 page
+2. - [x] Create 404 page
 3. - [x] Menu section
-4. - [ ] Blog Posts
-4. - [ ] Home 
+4. - [x] Blog Posts
+4. - [x] Home 
 5. - [ ] Contact
-6. - [ ] About/Services
+6. - [x] About/Services
    
    
 
