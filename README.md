@@ -22,7 +22,7 @@ This project aims to create a dynamic website out of the static 'RMedia' website
 3. - [x] Menu section
 4. - [x] Blog Posts
 4. - [x] Home 
-5. - [ ] Contact
+5. - [x] Contact
 6. - [x] About/Services
    
    
