@@ -1,53 +1,57 @@
-@media only screen and (max-width: 1200px){
+@media only screen and (max-width: 768px){
   .container{
-    max-width: 998px;
+  max-width: 100%;
+  margin: 0 auto;
+  }
+  .image-area img{ 
+    transform: scale(0.8);
+  }
+
+  .post-image-div{
+    transform: scale(0.8);
   }
 }
 
 @media only screen and (max-width: 768px){
-
-  .contentSection{
-    display: flex;
-    height: 1500px;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  .leftSection,
-  .middleSection,
-  .rightSection{
-    width: 100vw;
+  .content-section{
+    flex-direction: column;
   }
 
-  .leftSection,
-  .rightSection{ height: 100vh; }
-  .middleSection{ height: 1000px;}
-
-
-  .middleSection{
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  .topSection{
-    flex-direction: row;
-    flex-wrap: wrap;
+  .left-section{
+    width: 100%;
+    min-height: auto;
   }
 
-  .contentArea{
-    width: 100vw;
+  .middle-section{
+    width: 100%;
   }
-  .imageArea{ 
+
+  .right-section{
+    width: 100%;
+    min-height: auto;
     text-align: center;
-    width: 100vw;
   }
- 
-  
-  header h1{
-  width: 100px;
-  height: auto;
-  display: block;
-}
-#search{
-  display: block;
 }
 
+@media only screen and (max-width: 420px){
+  .head-box{
+    flex-direction: column;
+  }
+
+  .top-section{
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .content-area{
+    width: 100%;
+    order: 1;
+  }
+
+  .image-area{
+    width: 100%;
+    transform: scale(1);
+  }
+
+  .form{ width: 90%;}
 }

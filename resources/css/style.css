@@ -102,9 +102,7 @@ nav ul li a:hover{
 }
 
 .top-section{ 
-  display: flex;
   padding: 10px;
-  flex-direction: row;
   /* height: 50%; */
 }
 
