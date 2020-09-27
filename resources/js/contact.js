@@ -26,66 +26,111 @@ submitBtn.addEventListener('click', function(){
 
 function validate(name, email, phone, message){
   // Check whether fields are empty
-  if (name.length == 0 || email.length == 0 || phone.length == 0 || message.length == 0) {
-    const error = document.querySelectorAll(".label");
-    for (i = 0; i < error.length; i++) {
-      error[i].style.display = "block";
-    }
-    return false
-  }
-  else {
-    clearError()
+  // if (name.length == 0 || email.length == 0 || phone.length == 0 || message.length == 0) {
+  //   const error = document.querySelectorAll(".label");
+  //   for (i = 0; i < error.length; i++) {
+  //     error[i].style.display = "block";
+  //   }
+  //   return false
+  // }
+  // else {
+  clearError()
+  if(name.length == 0){
+    Id1 = "#name-error";
+    Id2 = "#name";
+    msg = "Name Field is Empty!";
+    setError(Id1, Id2, msg);
+    return false;
+  }else{
     if (name.length <= 2) {
-      Id1 = "#name-error"
-      Id2 = "#name"
-      setError(Id1,Id2)
-      return false
+      Id1 = "#name-error";
+      Id2 = "#name";
+      msg = "Name is invalid!";
+      setError(Id1, Id2, msg);
+      return false;
+    } else {
+      clearError();
     }
-    else{
-      clearError()
-    }
-
+  }
+  
+  if(phone.length ==0){
+    Id1 = "#phone-error";
+    Id2 = "#phone";
+    msg = "Phone number field is empty!";
+    setError(Id1, Id2, msg);
+    return false;
+  }
+  else{
     if (isNaN(phone) || phone.length != 10) {
       Id1 = "#phone-error";
       Id2 = "#phone";
-      setError(Id1, Id2);
-      return false
+      msg = "Phone number is invalid!";
+      setError(Id1, Id2, msg);
+      return false;
+    } else {
+      clearError();
     }
-    else{
-      clearError()
-    }
+  }
 
-    if (email.indexOf("@") <= 0 || email.length < 6 || email.indexOf('.') == -1) {
+  if(email.length == 0){
+    Id1 = "#email-error";
+    Id2 = "#email";
+    msg = "Email field is empty!";
+    setError(Id1, Id2, msg);
+    return false;
+  }
+  else{
+    if (
+      email.indexOf("@") <= 0 ||
+      email.length < 6 ||
+      email.indexOf(".") == -1
+    ) {
       Id1 = "#email-error";
       Id2 = "#email";
-      setError(Id1, Id2);
-      return false
+      msg = "Email is invalid!";
+      setError(Id1, Id2, msg);
+      return false;
+    } else {
+      clearError();
     }
-    else{
-      clearError()
-    }
+  }
 
+  if(message.length == 0){
+    Id1 = "#message-error";
+    Id2 = "#message";
+    msg = "Message field is empty!";
+    setError(Id1, Id2, msg);
+    return false;
+  }
+  else{
     if (message.length < 6) {
       Id1 = "#message-error";
       Id2 = "#message";
-      setError(Id1, Id2);
-      return false
-     
+      msg = "Message is invalid!";
+      setError(Id1, Id2, msg);
+      return false;
+    } else {
+      clearError();
     }
-    else{
-      clearError()
-    }
-    
   }
-
-  return true
+  
+  return true;
 }
 
-function setError(id1,id2){
+  
+
+
+function setError(id1,id2,msg){
   const fieldError = document.querySelector(id1);
   const field = document.querySelector(id2)
   field.style.border = "1px solid #ff0033";
+  fieldError.textContent = msg
   fieldError.style.display = "block";
+}
+
+
+function emptyError(){
+  const emptyField = document.querySelector(id)
 }
 
 function clearError(){
