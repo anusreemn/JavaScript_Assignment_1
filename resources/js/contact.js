@@ -36,8 +36,9 @@ function validate(name, email, phone, message){
   else {
     clearError()
     if (name.length <= 2) {
-      Id = "#name-error"
-      setError(Id)
+      Id1 = "#name-error"
+      Id2 = "#name"
+      setError(Id1,Id2)
       return false
     }
     else{
@@ -45,8 +46,9 @@ function validate(name, email, phone, message){
     }
 
     if (isNaN(phone) || phone.length != 10) {
-      Id = "#phone-error";
-      setError(Id);
+      Id1 = "#phone-error";
+      Id2 = "#phone";
+      setError(Id1, Id2);
       return false
     }
     else{
@@ -54,8 +56,9 @@ function validate(name, email, phone, message){
     }
 
     if (email.indexOf("@") <= 0 || email.length < 6 || email.indexOf('.') == -1) {
-      Id = "#email-error";
-      setError(Id);
+      Id1 = "#email-error";
+      Id2 = "#email";
+      setError(Id1, Id2);
       return false
     }
     else{
@@ -63,8 +66,9 @@ function validate(name, email, phone, message){
     }
 
     if (message.length < 6) {
-      Id = "#message-error";
-      setError(Id);
+      Id1 = "#message-error";
+      Id2 = "#message";
+      setError(Id1, Id2);
       return false
      
     }
@@ -77,15 +81,22 @@ function validate(name, email, phone, message){
   return true
 }
 
-function setError(id){
-  const fieldError = document.querySelector(id);
+function setError(id1,id2){
+  const fieldError = document.querySelector(id1);
+  const field = document.querySelector(id2)
+  field.style.border = "1px solid #ff0033";
   fieldError.style.display = "block";
 }
 
 function clearError(){
   const error = document.querySelectorAll(".label");
+  const inputs = document.querySelectorAll("input")
+  const textArea = document.querySelector("textarea")
+
+  textArea.style.border = "1px solid #000"
   for(i=0; i< error.length; i++){
     error[i].style.display = "none"
+    inputs[i].style.border = "1px solid #000"
   }
   
 }
