@@ -97,7 +97,7 @@ window.onload = (event) => {
           return postElement;
         }
 
-        for (i = 0; i <= blogObj.length; i++) {
+        for (i = 0; i <= blogObj.length-1; i++) {
           postLists.appendChild(
             createPost(blogObj[i].tittle, blogObj[i].image)
           );

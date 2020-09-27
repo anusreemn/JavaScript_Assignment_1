@@ -255,7 +255,7 @@ label{
   margin: 0 10px;
   padding: 5px 0;
   border-radius: 5px;
-  opacity: 0.8;
+  /* opacity: 0.8; */
   display: none;
   /* background-color: #ff0033; */
   color: #ff0033;
@@ -281,5 +281,4 @@ label{
   height: auto;
   margin: 30px auto;
   opacity: 0.5;
-
 }

@@ -25,15 +25,6 @@ submitBtn.addEventListener('click', function(){
 
 
 function validate(name, email, phone, message){
-  // Check whether fields are empty
-  // if (name.length == 0 || email.length == 0 || phone.length == 0 || message.length == 0) {
-  //   const error = document.querySelectorAll(".label");
-  //   for (i = 0; i < error.length; i++) {
-  //     error[i].style.display = "block";
-  //   }
-  //   return false
-  // }
-  // else {
   clearError()
   if(name.length == 0){
     Id1 = "#name-error";
@@ -61,7 +52,11 @@ function validate(name, email, phone, message){
     return false;
   }
   else{
-    if (isNaN(phone) || phone.length != 10) {
+    const stringNumber = phone.toString()
+    const slicedNum = stringNumber.slice(3)
+    const phoneNo = parseInt(slicedNum,10)
+    
+    if (isNaN(phoneNo) || slicedNum.length != 10) {
       Id1 = "#phone-error";
       Id2 = "#phone";
       msg = "Phone number is invalid!";
@@ -128,10 +123,6 @@ function setError(id1,id2,msg){
   fieldError.style.display = "block";
 }
 
-
-function emptyError(){
-  const emptyField = document.querySelector(id)
-}
 
 function clearError(){
   const error = document.querySelectorAll(".label");
