@@ -24,6 +24,9 @@ This project aims to create a dynamic website out of the static 'RMedia' website
 4. - [x] Home 
 5. - [x] Contact
 6. - [x] About/Services
+
+### Dummy Site
+Want to see the progress so far? Here it is: [RMedia](https://thejus5.github.io/index.html)
    
    
 
