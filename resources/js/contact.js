@@ -9,16 +9,15 @@ submitBtn.addEventListener('click', function(){
   const email = document.querySelector("#email").value
   const phone = document.querySelector("#phone").value
   const message = document.querySelector("#message").value
-
-  var errorMessage = "Oops! Please Check the fields."
   
   if (validate(name, email, phone, message)){
-    var contactData = {name:name, email:email, phone:phone, message:message}
+    var contactData = {name:name, email:email, phone:phone, message:message} 
     const contactJSON = JSON.stringify(contactData)
+    clearError()
     apiCall(contactJSON)
   }
   else{
-    alert(errorMessage)
+    return
   }
   
 })
@@ -28,30 +27,67 @@ submitBtn.addEventListener('click', function(){
 function validate(name, email, phone, message){
   // Check whether fields are empty
   if (name.length == 0 || email.length == 0 || phone.length == 0 || message.length == 0) {
+    const error = document.querySelectorAll(".label");
+    for (i = 0; i < error.length; i++) {
+      error[i].style.display = "block";
+    }
     return false
   }
   else {
+    clearError()
     if (name.length <= 2) {
-      document.querySelector("#name").focus()
+      Id = "#name-error"
+      setError(Id)
       return false
     }
-    else if (isNaN(phone) || phone.length != 10) {
-      document.querySelector("#phone").focus()
+    else{
+      clearError()
+    }
+
+    if (isNaN(phone) || phone.length != 10) {
+      Id = "#phone-error";
+      setError(Id);
       return false
     }
-    else if (email.indexOf("@") <= 0 || email.length < 6 || email.indexOf('.') == -1) {
-      document.querySelector("#email").focus()
+    else{
+      clearError()
+    }
+
+    if (email.indexOf("@") <= 0 || email.length < 6 || email.indexOf('.') == -1) {
+      Id = "#email-error";
+      setError(Id);
       return false
     }
-    else if (message.length < 6) {
-      document.querySelector("#message").focus()
+    else{
+      clearError()
+    }
+
+    if (message.length < 6) {
+      Id = "#message-error";
+      setError(Id);
       return false
+     
     }
-    else {
-      return true
+    else{
+      clearError()
     }
+    
   }
 
+  return true
+}
+
+function setError(id){
+  const fieldError = document.querySelector(id);
+  fieldError.style.display = "block";
+}
+
+function clearError(){
+  const error = document.querySelectorAll(".label");
+  for(i=0; i< error.length; i++){
+    error[i].style.display = "none"
+  }
+  
 }
 
 

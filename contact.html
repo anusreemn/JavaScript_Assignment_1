@@ -47,10 +47,19 @@
           </div>
           <div class="bottom-section">
             <form class="form">
+              <label for="name" class="label" id="name-error">Name is invalid!</label>
               <input type="text" name="name" placeholder="Name" id="name" required>
+
+              <label for="subject" class="label" id="subject-error">Invalid Subject!</label>
               <input type="text" name="Subject" placeholder="Subject" id="subject">
+
+              <label for="phone" class="label" id="phone-error">Invalid Phone Number!</label>
               <input type="tel" name="Phone" id="phone" placeholder="Number">
+
+              <label for="Email" class="label" id="email-error">Invalid Email!</label>
               <input type="email" name="Email" placeholder="Email" id="email" required>
+
+              <label id="message-error" class="label">Invalid Message!</label>
               <textarea name="Message" placeholder="Description" id="message"></textarea>
               
               <button type="button" class="formBtn">SUBMIT</button>
