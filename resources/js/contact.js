@@ -107,7 +107,7 @@ function validateMessage(input){
 
 function countChar(input){
   const counter = document.querySelector(`#${input.id}-counter`);
-  const limit = field.maxLength;
+  const limit = input.maxLength;
 
   charInField = input.value.length;
   newCounterVale = limit - charInField;
@@ -124,9 +124,9 @@ for(i=0;i< fields.length; i++){
 
 form.addEventListener('keydown',function(e){
   try{
-    
+    const field = e.target
     clearError(e.target);
-    countChar(e.target)
+    countChar(field)
     // const counter = document.querySelector(`#${e.target.id}-counter`);
     // const limit = field.maxLength;
 
