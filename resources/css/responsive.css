@@ -1,4 +1,4 @@
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 991px){
   .container{
   max-width: 100%;
   margin: 0 auto;
@@ -30,6 +30,15 @@
     width: 100%;
     min-height: auto;
     text-align: center;
+  }
+
+  .footer-elements{
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-elements li{
+    width: 100%;
+    margin: 0 auto;
   }
 }
 

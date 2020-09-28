@@ -1,10 +1,10 @@
 window.onload = (event) => {
   var obj;
   var index;
+  
 
   // Fetching menu objects form menu.json
   const menuRequest = new XMLHttpRequest();
-  const menuObj = "";
 
   menuRequest.onload = function () {
     if (this.status === 200) {
