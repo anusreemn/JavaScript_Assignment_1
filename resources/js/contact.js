@@ -163,7 +163,7 @@ function isEmail(email){
 
 // Name validation using regular expressions
 function isName(name){
-  return /^[A-Za-z]+$/.test(name)
+  return /^[A-Za-z\s]+$/.test(name)
 }
 
 

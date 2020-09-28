@@ -260,10 +260,18 @@ textarea,
   border: 1px solid #000;
 }
 
+textarea{
+  resize: none;
+}
+
 .label-box{
   margin-top: 10px;
   padding: 2px 10px;
   justify-content: space-between;
+}
+.label-box p{ 
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .label{
