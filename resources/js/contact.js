@@ -80,11 +80,7 @@ function validate(name, email, phone, message){
     msg = "Email field is empty!";
     setError(Id1, Id2, msg);
   } else {
-    if (
-      email.indexOf("@") <= 0 ||
-      email.length < 6 ||
-      email.indexOf(".") == -1
-    ) {
+    if (!isEmail(email)) {
       Id1 = "#email-error";
       Id2 = "#email";
       msg = "Email is invalid!";
@@ -120,11 +116,9 @@ function validate(name, email, phone, message){
   }
 
   if (validName && validEmail && validPhone && validMessage) {
-    console.log("true");
     return true;
     
   } else {
-    console.log("false");
     return false;
   }
 
@@ -134,7 +128,6 @@ function validate(name, email, phone, message){
 
 
 function setError(id1,id2,msg){
-  console.log(id1)
   const fieldError = document.querySelector(id1);
   const field = document.querySelector(id2)
   field.style.border = "1px solid #ff0033";
@@ -156,4 +149,9 @@ function clearError(id1,id2){
 function apiCall(jsonData){
   // alert(jsonData)
   console.log(jsonData)
+}
+
+// Email validation using regular expressions
+function isEmail(email){
+  return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
 }
