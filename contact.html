@@ -49,20 +49,25 @@
             </div>
           </div>
           <div class="bottom-section">
-            <form class="form">            
-              <input type="text" name="name" placeholder="Name" id="name" required>
+            <form class="form">  
+              <label for="name">Name</label>          
+              <input type="text" name="name" id="name" required>
               <p class="label" id="name-error"></p>
               
-              <input type="text" name="Subject" placeholder="Subject" id="subject">
+              <label for="Subject">Subject</label>
+              <input type="text" name="Subject" id="subject">
               <p class="label" id="subject-error"></p>
               
-              <input type="tel" name="Phone" id="phone" placeholder="Number" max="13"value="+91">
+              <label for="Phone"></label>
+              <input type="tel" name="Phone" id="phone" max="13"value="+91">
               <p class="label" id="phone-error"></p>
               
-              <input type="email" name="Email" placeholder="Email" id="email" required>
+              <label for="Email">Email</label>
+              <input type="email" name="Email" id="email" required>
               <p class="label" id="email-error"></p>
 
-              <textarea name="Message" placeholder="Description" id="message"></textarea>
+              <Label>Description</Label>
+              <textarea name="Message" id="message"></textarea>
               <p id="message-error" class="label"></p>
               
               <button type="button" class="formBtn">SUBMIT</button>
