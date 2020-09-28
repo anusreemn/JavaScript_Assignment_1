@@ -30,7 +30,6 @@ function validate(name, email, phone, message){
   var validEmail = false;
   var validPhone = false;
   var validMessage = false;
-  console.log(name.length);
 
   if (name.length == 0) {
     Id1 = "#name-error";
@@ -38,16 +37,24 @@ function validate(name, email, phone, message){
     msg = "Name Field is Empty!";
     setError(Id1, Id2, msg);
   } else {
-    if (name.length <= 2) {
+    if (name.length < 8) {
       Id1 = "#name-error";
       Id2 = "#name";
-      msg = "Name is too short!";
+      msg = "Name should be more than 8 charectors!";
       setError(Id1, Id2, msg);
     } else {
-      Id1 = "#name-error";
-      Id2 = "#name";
-      clearError(Id1,Id2);
-      validName = true;
+      if(!isName(name)){
+        Id1 = "#name-error";
+        Id2 = "#name";
+        msg = "Name cannot be numbers or white space!";
+        setError(Id1, Id2, msg);
+      }
+      else{
+        Id1 = "#name-error";
+        Id2 = "#name";
+        clearError(Id1, Id2);
+        validName = true;
+      }
     }
   }
 
@@ -124,8 +131,6 @@ function validate(name, email, phone, message){
 
 }
 
-  
-
 
 function setError(id1,id2,msg){
   const fieldError = document.querySelector(id1);
@@ -154,4 +159,24 @@ function apiCall(jsonData){
 // Email validation using regular expressions
 function isEmail(email){
   return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
+}
+
+// Name validation using regular expressions
+function isName(name){
+  return /^[A-Za-z]+$/.test(name)
+}
+
+
+// const counter = document.querySelector("#name-counter")
+// console.log(counter.textContent)
+
+// Counting Charectors
+function charCounter(id1,id2,limit){
+  const field = document.querySelector(id1)
+  const counter = document.querySelector(id2)
+  
+  const charInField = field.value.length
+  const newCounterVale = limit - charInField
+
+  counter.innerHTML = newCounterVale
 }
