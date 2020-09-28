@@ -13,6 +13,8 @@
 }
 
 @media only screen and (max-width: 768px){
+  .drop-down{ display: block;}
+  .navigation{ display: none;}
   .content-section{
     flex-direction: column;
   }

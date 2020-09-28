@@ -28,6 +28,17 @@ body{
 /*-------------------------*/
 /*------ HEADER -----------*/
 /*-------------------------*/
+.drop-down{
+  display: none;
+  text-align: center;
+}
+.drop-down-button{
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(92, 92, 92);
+}
+
+
 .head-box{
   justify-content: space-between;
 }
