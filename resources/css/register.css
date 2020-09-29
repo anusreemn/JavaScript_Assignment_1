@@ -26,16 +26,14 @@ body{
 /*------ Login Page -------*/
 /*-------------------------*/
 
-.login-body,
-.register-body{
+.login-body{
   position: relative;
   width: 100vw;
   height: 100vh;
   background-color:#66c5e4;
 }
 
-.login-card,
-.register-card{
+.login-card{
   background-color:#95e2f9;
   border-radius: 10px;
   margin: 100px auto;
@@ -44,14 +42,12 @@ body{
   height: auto;
 }
 
-.login-form,
-.register-form{
+.login-form{
   padding: 20px;
   flex-direction: column;
 }
 
-.login-form input,
-.register-form input{
+.login-form input{
   padding: 10px;
   margin: 10px 0;
   border-radius: 5px;
@@ -81,3 +77,65 @@ body{
 /*-------------------------*/
 /*------ Register Page ----*/
 /*-------------------------*/
+
+.register-body{ 
+  height: auto;
+  position: relative;
+  width: 100vw;
+  background-color:#66c5e4;
+}
+
+.register-form{
+  flex-direction: column;
+  padding: 30px;
+  margin: 0 auto;
+}
+
+.register-card{ 
+  margin-top: 30px;
+  background-color:#95e2f9;
+  border-radius: 10px;
+  margin: 100px auto;
+  width: 40%;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+  height: auto;
+}
+
+.register-form input{
+  padding: 8px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+select{
+  padding: 8px;
+  margin: 10px 0;
+  width: 100%;
+  border-radius: 5px;
+}
+form p{text-align: right;}
+
+.display-box{
+  flex-direction: row;
+  margin: 0 10px;
+  justify-content: space-between;
+}
+
+.display-box div{
+  width: 47%;
+}
+
+#register-button{
+  width: 25%;
+  margin: 30px auto;
+  padding: 8px 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.checkbox-group{
+  margin: 0 auto;
+}
+..checkbox-group input{
+  margin-top: 15px;
+}

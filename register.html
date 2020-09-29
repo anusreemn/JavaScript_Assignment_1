@@ -12,34 +12,63 @@
     <div class="register-card">
       <form class="register-form flex-box">
 
-        <div class="firstname-group">
-          <label for="firstname"></label>
-          <input type="text" name="firstname" id="firstname">
-          <p class="firstname-error error">0</p>
+        <div class="display-box flex-box">
+          <div class="firstname-group flex-box">
+            <label for="firstname">First Name</label>
+            <input type="text" name="firstname" id="firstname">
+            <p class="firstname-error error">0</p>
+          </div>
+          
+          <div class="lastname-group flex-box">
+            <label for="lastname">Last Name</label>
+            <input type="text" name="lastname" id="lastname">
+            <p class="lastname-error error">0</p>
+          </div>
         </div>
 
-        <div class="lastname-group">.
-          <label for="lastname"></label>
-          <input type="text" name="lastname" id="lastname">
-          <p class="lastname-error error">0</p>
+        <div class="display-box flex-box">
+          <div class="dob-group flex-box">
+            <label for="dob">Date Of Birth</label>
+            <input type="text" name="dob" id="dob">
+            <p class="dob-error error">0</p>
+          </div>
+          
+          <div class="gender-group flex-box">
+            <label for="gender">Gender</label>
+            <!-- <input type="text" name="gender" id="gender"> -->
+            <select name="genger" id="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+            <!-- <p class="gender-error error">0</p> -->
+          </div>
         </div>
 
-        <div class="dob-group">
-          <label for="dob"></label>
-          <input type="text" name="dob" id="dob">
-          <p class="dob-error error">0</p>
+        <div class="display-box flex-box">
+          <div class="password-group flex-box">
+            <label for="password">Password</label>
+            <input type="text" name="password" id="password">
+            <p class="password-error error">0</p>
+          </div>
+          
+          <div class="password-confirm-group flex-box">
+            <label for="password-confirm">Confirm Password</label>
+            <input type="text" name="password-confirm" id="password-confirm">
+            <p class="password-confirm-error error">0</p>
+          </div>
         </div>
 
-        <div class="gender-group"></div>
-
-        <div class="password-group"></div>
-
-        <div class="password-confirm-group"></div>
-
-
+        <div class="checkbox-group">
+          <input type="checkbox" name="t-and-c" id="t-and-c" checked>  Accept Terms and Conditions
+        </div>
+        
+        <button type="button" id="register-button">Sign Up</button>
       </form>
     </div>
 
+    
+    <a href="login.html">Register</a>
   </section>
 </body>
 </html>
