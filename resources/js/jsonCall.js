@@ -1,4 +1,4 @@
-var jsonCaller = function (meathod, url,callback) {
+let jsonCaller = function (meathod, url,callback) {
   let xhr = new XMLHttpRequest()
 
   xhr.onload = function () {
