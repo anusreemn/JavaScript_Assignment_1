@@ -1,7 +1,7 @@
 # JavaScript Assignment 1
 >Author: Thejus S
 
->Mentor: Anjana V R
+>Mentor: Anjana V R, Anusree Nambiar
 
 >Trainer: Nishin T N
 
@@ -12,7 +12,7 @@ This project aims to create a dynamic website out of the static 'RMedia' website
 * CSS3
 * JavaScript
 
-## Tasks
+## Tasks (Assignment 1)
 1. Create JSON files for:
    * - [x] Menu
    * - [x] Home page:
@@ -27,6 +27,12 @@ This project aims to create a dynamic website out of the static 'RMedia' website
 
 ### Dummy Site
 Want to see the progress so far? Here it is: [RMedia](https://thejus5.github.io/index.html)
+
+## Tasks (Assignment 2)
+1. - [ ] Create login page
+2. - [ ] Create register page
+3. - [ ] Setup validation
+
    
    
 

@@ -20,10 +20,6 @@ body{
 
 .flex-box{display: flex;}
 
-.row{
-  padding: 0 !important;
-  margin: 0 !important;
-}
 
 /*-------------------------*/
 /*------ HEADER -----------*/
@@ -306,3 +302,16 @@ textarea{
   margin: 30px auto;
   opacity: 0.5;
 }
+
+
+/*-------------------------*/
+/*------ Login Page -------*/
+/*-------------------------*/
+
+.login-body{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #018dad;
+}
+

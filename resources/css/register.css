@@ -1,0 +1,83 @@
+/*-------------------------*/
+/*------ GENERAL-----------*/
+/*-------------------------*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container{
+  max-width: 1084px;
+  margin: 0 auto;
+}
+
+.flex-box{display: flex;}
+
+
+
+/*-------------------------*/
+/*------ Login Page -------*/
+/*-------------------------*/
+
+.login-body,
+.register-body{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color:#66c5e4;
+}
+
+.login-card,
+.register-card{
+  background-color:#95e2f9;
+  border-radius: 10px;
+  margin: 100px auto;
+  width: 30%;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+  height: auto;
+}
+
+.login-form,
+.register-form{
+  padding: 20px;
+  flex-direction: column;
+}
+
+.login-form input,
+.register-form input{
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.username-group,
+.password-group,
+.firstname-group,
+.lastname-group,
+.dob-group,
+.gender-group,
+.password-group,
+.password-confirm-group{
+  margin-top: 10px;
+  flex-direction: column;
+}
+
+#login-button{
+  width: 25%;
+  margin: 10px auto;
+  padding: 8px 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+/*-------------------------*/
+/*------ Register Page ----*/
+/*-------------------------*/
