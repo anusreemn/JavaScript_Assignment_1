@@ -6,7 +6,7 @@ window.onload = (event) => {
 
   
   // Menu handler
-  const menuList = document.querySelector("#nav-menues")
+  const menuList = document.querySelector("#nav-menus")
   jsonCaller('get','resources/json/menu.json',function(menuObj){
   
     obj = menuObj
