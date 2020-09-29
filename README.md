@@ -42,7 +42,7 @@ Want to see the progress so far? Here it is: [RMedia](https://thejus5.github.io/
    * Validate user input
    * Store data in local storage as object
 6. - [ ] home.js:
-   * Retrive name of user set by login page
+   * Retrieve name of user set by login page
    * Show the name in header
    * Logout button: Clear local storage and redirect to login page
    
