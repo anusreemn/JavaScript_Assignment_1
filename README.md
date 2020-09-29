@@ -29,10 +29,22 @@ This project aims to create a dynamic website out of the static 'RMedia' website
 Want to see the progress so far? Here it is: [RMedia](https://thejus5.github.io/index.html)
 
 ## Tasks (Assignment 2)
+> Module 1
 1. - [ ] Create login page
 2. - [ ] Create register page
-3. - [ ] Setup validation
-
+3. - [ ] Create main.j file: redirection to login page
+4. - [ ] login.js file:
+   * Check whether local storage has any objects:
+      - If yes: Validate user input with data in local storage ang redirect to home.html
+         - Store name of user in a global variable for home.html to access
+      - If no: Redirect to register page
+5. - [ ] register.js file:
+   * Validate user input
+   * Store data in local storage as object
+6. - [ ] home.js:
+   * Retrive name of user set by login page
+   * Show the name in header
+   * Logout button: Clear local storage and redirect to login page
    
-   
+> Module 2 (Pending)
 

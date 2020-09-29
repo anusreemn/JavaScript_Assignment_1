@@ -136,6 +136,12 @@ form p{text-align: right;}
 .checkbox-group{
   margin: 0 auto;
 }
-..checkbox-group input{
+.checkbox-group input{
   margin-top: 15px;
+}
+
+a{
+  width: 100%;
+  text-align: center;
+  color: #000;
 }
