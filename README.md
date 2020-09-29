@@ -14,15 +14,19 @@ This project aims to create a dynamic website out of the static 'RMedia' website
 
 ## Tasks
 1. Create JSON files for:
-   * - [ ] Menu
-   * - [ ] Home page:
-   * - [ ] Table headings
-   * - [ ] Blog posts
-2. - [ ] Create 404 page
-3. - [ ] Menu section
-4. - [ ] Home 
-5. - [ ] Contact
-6. - [ ] About/Services
+   * - [x] Menu
+   * - [x] Home page:
+   * - [x] Table headings
+   * - [x] Blog posts
+2. - [x] Create 404 page
+3. - [x] Menu section
+4. - [x] Blog Posts
+4. - [x] Home 
+5. - [x] Contact
+6. - [x] About/Services
+
+### Dummy Site
+Want to see the progress so far? Here it is: [RMedia](https://thejus5.github.io/index.html)
    
    
 

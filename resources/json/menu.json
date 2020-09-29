@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Home",
+    "status": true,
+    "link": "/index.html"
+  },
+  {
+    "label": "About",
+    "status": true,
+    "link": "/about.html"
+  },
+  {
+    "label": "Services",
+    "status": false,
+    "link": null
+  },
+  {
+    "label": "Contact",
+    "status": true,
+    "link": "/contact.html"
+  }
+]
