@@ -65,6 +65,9 @@ body{
   flex-direction: column;
 }
 
+.username-error,
+.password-error{ color: #ff0033;}
+
 #login-button{
   width: 25%;
   margin: 10px auto;
@@ -150,3 +153,53 @@ a{
 .error{
   color: #ff0033;
 }
+
+
+/*-------------------------*/
+/*------ Pop up -----------*/
+/*-------------------------*/
+.blur{
+  filter: blur(20px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.active{
+  visibility: visible !important;
+  transition: 0.5s;
+}
+
+.popup{
+  flex-direction: column;
+  justify-content: space-around;
+  position: fixed;
+  padding: 30px;
+  top: 40%;
+  visibility: hidden;
+  left: 50%;
+  width: 500px;
+  transform: translate(-50%,-50%);
+  background-color: #fff;
+}
+
+.popup-heading{
+  text-align: center;
+}
+
+.popup-image{
+  margin: 10px auto;
+  width: 100px;
+  height: auto;
+}
+
+.btn{
+  text-decoration: none;
+  color: #000;
+  background-color: #66c5e4;
+  padding: 10px 12px;
+  margin: 10px 0;
+}
+
+
+
+

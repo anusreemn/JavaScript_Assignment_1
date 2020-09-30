@@ -34,6 +34,7 @@ registerBtn.addEventListener('click',function(){
         }
 
         utils.storeObjects("users",user)
+        popup()
       } else {
         setError(confirmField, "Passwords doesnot match.");
         isValid = true;
@@ -183,4 +184,11 @@ function createUser(firstname,lastname,dob,gender,password){
   utils.storeObjects("users",userObj)
 }
 
-// createUser("thejus","s","5-3-118","male","123456klj")
+// Make the popup
+function popup(){
+  let body = document.querySelector(".register-body")
+  let popupCard = document.querySelector(".popup")
+
+  body.classList.toggle("blur")
+  popupCard.classList.toggle("active")
+}

@@ -28,8 +28,7 @@ function loginAction(){
       let dataString = JSON.stringify(data)
       
       if (dataString == '[]') { 
-        setError(fields[0], "No user found")
-        console.log("No user")
+        setError(fields[0], "No user exist")
       }
       else{
         for (let each_option of data) {
