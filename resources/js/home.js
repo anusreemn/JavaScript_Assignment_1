@@ -5,13 +5,7 @@ var indexContentObj
 var paraHeight
 
 // Welcome text
-var welcomeTextbox = document.querySelector(".welcome-text")
-var logoutBtn = document.querySelector('.logout')
-welcomeTextbox.textContent = `Hi ${localStorage.getItem("loggedin")}`;
-logoutBtn.addEventListener('click',function(){
-  localStorage.removeItem("loggedin")
-  location.href = "/login.html"
-})
+
 
 
 // Heading of index page from menu elements

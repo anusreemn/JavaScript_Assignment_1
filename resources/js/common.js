@@ -5,6 +5,15 @@ window.onload = (event) => {
   var obj;
   var index;
 
+  var welcomeTextbox = document.querySelector(".welcome-text")
+  var logoutBtn = document.querySelector('.logout')
+  welcomeTextbox.textContent = `Hi ${localStorage.getItem("loggedin")}`;
+  logoutBtn.addEventListener('click', function () {
+    localStorage.removeItem("loggedin")
+    location.href = "/login.html"
+  })
+  
+
   // Menu handler
   const menuList = document.querySelector("#nav-menus")
   utils.jsonCaller('get','resources/json/menu.json',function(menuObj){
