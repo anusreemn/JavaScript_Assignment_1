@@ -23,7 +23,14 @@
   <header>
     <div class="container flex-box head-box">
       <h1><a href="#"><img src="resources/images/logo.jpg" alt="Rmedia"></a></h1>
-      <input type="search" name="search" id="search" placeholder="search...">
+      <div class="search-and-text">
+        <input type="search" name="search" id="search" placeholder="search...">
+        <div class="user-text-box flex-box">
+          <p class="welcome-text"></p>
+          <button class="logout">Logout</button>
+        </div>
+      </div>
+      
     </div>
   </header>
 
@@ -138,8 +145,8 @@
     </div>
   </footer>
 
-  <script type="module" src="resources/js/jsonCall.js"></script>
-  <script src="resources/js/home.js"></script>
+  <script type="module" src="resources/js/utils.js"></script>
+  <script type="module" src="resources/js/home.js"></script>
   <script type="module" src="resources/js/common.js"></script>
   
 </body>

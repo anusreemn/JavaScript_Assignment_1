@@ -1,13 +1,13 @@
-import jsonCaller from './jsonCall.js'
+import utils from './utils.js'
+// import testCall from "./jsonCall.js"
 window.onload = (event) => {
   
   var obj;
   var index;
 
-  
   // Menu handler
   const menuList = document.querySelector("#nav-menus")
-  jsonCaller('get','resources/json/menu.json',function(menuObj){
+  utils.jsonCaller('get','resources/json/menu.json',function(menuObj){
   
     obj = menuObj
     for (let each_option of menuObj) {
@@ -45,7 +45,7 @@ window.onload = (event) => {
 
   // Blog post section
   let postLists = document.querySelector(".posts")
-  jsonCaller('get',"resources/json/blogpost.json", function(blogObj){
+  utils.jsonCaller('get',"resources/json/blogpost.json", function(blogObj){
      for(let each_option of blogObj){
        let blogPost = createPost(each_option.tittle, each_option.image)
        postLists.appendChild(blogPost)

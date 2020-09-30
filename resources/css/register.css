@@ -145,3 +145,8 @@ a{
   text-align: center;
   color: #000;
 }
+
+/* Errors */
+.error{
+  color: #ff0033;
+}

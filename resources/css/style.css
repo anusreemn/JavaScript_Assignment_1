@@ -56,9 +56,23 @@ header h1{
   height: 40px;
   border-radius: 20px;
   border: 3px solid #66c5e4;
-  padding: 0 1%;
+  padding: 0 5%;
   margin-top: 10px;
   box-shadow: 3px 3px rgba(0,0,0,0.4);
+}
+
+.user-text-box{
+  /* background-color: #018dad; */
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.welcome-text{
+ margin: auto 0;
+}
+
+.logout{
+  padding: 2px;
 }
 
 
