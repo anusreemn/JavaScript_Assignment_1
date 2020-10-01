@@ -12,16 +12,18 @@ window.onload = (event) => {
     localStorage.removeItem("loggedin")
     location.href = "/login.html"
   })
-  
 
   // Menu handler
-  const menuList = document.querySelector("#nav-menus")
+  const menuList = document.querySelector('#nav-menus')
+  const header = document.querySelector('#page-heading')
+
   utils.jsonCaller('get','resources/json/menu.json',function(menuObj){
   
     obj = menuObj
     for (let each_option of menuObj) {
       let menuElements = createMenu(each_option.label, each_option.link, each_option.status)
       menuList.appendChild(menuElements)
+      createHeading(each_option)
     }
   })
 
@@ -37,6 +39,13 @@ window.onload = (event) => {
     }
   })
 
+  // Function for setting heading
+  function createHeading(input){
+    let currentPath = location.pathname
+    if (currentPath == input.link){
+      header.textContent = input.label
+    }
+  }
 
   // Function for creating menu elements
   function createMenu(content, link, status) {

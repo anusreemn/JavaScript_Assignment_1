@@ -8,27 +8,32 @@ var paraHeight
 
 
 
-// Heading of index page from menu elements
-const header = document.querySelector("#page-heading");
-const headRequest = new XMLHttpRequest()
+// Heading of page from menu elements
+// const header = document.querySelector("#page-heading");
 
-headRequest.onload = function(){
-  if(this.status === 200){
-    try{
-      fromMenuObj = JSON.parse(this.responseText)
-      header.textContent = fromMenuObj[0].label
-    }
-    catch{
-      console.warn("JSON not parsed")
-    }
-  }
-  else{
-    console.warn("File not found")
-  }
-}
+// utils.jsonCaller('get','resources/json/menu.json',function(object){
+//   header.textContent = object[0].label
+// })
 
-headRequest.open("get", "resources/json/menu.json")
-headRequest.send()
+// const headRequest = new XMLHttpRequest()
+
+// headRequest.onload = function(){
+//   if(this.status === 200){
+//     try{
+//       fromMenuObj = JSON.parse(this.responseText)
+//       // header.textContent = fromMenuObj[0].label
+//     }
+//     catch{
+//       console.warn("JSON not parsed")
+//     }
+//   }
+//   else{
+//     console.warn("File not found")
+//   }
+// }
+
+// headRequest.open("get", "resources/json/menu.json")
+// headRequest.send()
 
 
 // Loading Contents for Homepage
@@ -69,9 +74,7 @@ const readLessBtn = document.querySelector(".read-less")
 
 // Main resize function
 function paraResize(){
-  paraHeight = para.offsetHeight;
-  console.log(paraHeight)
-
+  paraHeight = para.offsetHeight
   if (paraHeight > 200) {
     readLess();
   } else {
