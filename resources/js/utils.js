@@ -8,11 +8,11 @@ let jsonCaller = function (meathod, url,callback) {
         callback(responsObj)
       }
       catch{
-        console.warn("JSON not parsed")
+        console.warn('JSON not parsed')
       }
     }
     else{
-      console.warn("JSON not found")
+      console.warn('JSON not found')
     }
   }
 
@@ -35,11 +35,11 @@ let retreiveObjects = function(key, callback){
 }
 
 let testcall = function (callback){
-  let msg = "testcall accesed"
+  let msg = 'testcall accesed'
   callback(msg)
 }
 
-var utils = { jsonCaller, testcall, storeObjects, retrieveObjects: retreiveObjects }
+let utils = { jsonCaller, testcall, storeObjects, retrieveObjects: retreiveObjects }
 export default utils
 
 // module.exports = {jsonCaller,testcall}

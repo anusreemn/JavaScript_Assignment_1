@@ -1,6 +1,6 @@
 // https://youtu.be/eg4e-FObyJ8
-const submitBtn = document.querySelector(".formBtn")
-const fields = document.querySelectorAll(".input");
+const submitBtn = document.querySelector('.formBtn')
+const fields = document.querySelectorAll('.input');
 const form = document.querySelector('form')
 
 var isValid = true
@@ -42,16 +42,16 @@ function validate(input) {
   if (input.required && input.value.length == 0) {
     setError(input, `${input.name} field cannot be empty!`);
   } else {
-    if (input.id == "name") {
+    if (input.id == 'name') {
       validName = validateName(input)
     }
-    else if(input.id == "phone"){
+    else if(input.id == 'phone'){
       validPhone = validatePhone(input)
     }
-    else if(input.id == "email"){
+    else if(input.id == 'email'){
       validEmail = validateEmail(input)
     }
-    else if(input.id == "message"){
+    else if(input.id == 'message'){
       validMessage = validateMessage(input)
     }
   }
@@ -60,11 +60,11 @@ function validate(input) {
 
 function validateName(input){
   if(input.value.length < 8){
-    setError(input, "Name is too short!");
+    setError(input, 'Name is too short!');
     return false
   }else{
     if(!isName(input.value)){
-      setError(input, "Name is invalid!");
+      setError(input, 'Name is invalid!');
       return false
     }
     else{
@@ -77,7 +77,7 @@ function validateName(input){
 function validatePhone(input){
   
   if(isNaN(input.value) || input.value.length != 10){
-    setError(input, "Phone number is invalid!");
+    setError(input, 'Phone number is invalid!');
     return false;
   }else{
     clearError(input)
@@ -87,7 +87,7 @@ function validatePhone(input){
 
 function validateEmail(input){
   if (!isEmail(input.value)) {
-    setError(input,"Email is invalid!");
+    setError(input,'Email is invalid!');
     return false
   } else {
     clearError(input);
@@ -97,7 +97,7 @@ function validateEmail(input){
 
 function validateMessage(input){
   if (input.value.length < 6) {
-    setError(input, "Message is too short!");
+    setError(input, 'Message is too short!');
     return false
   } else {
     clearError(input);
@@ -137,9 +137,9 @@ form.addEventListener('keydown',function(e){
 function setError(input,msg){
   const fieldError = document.querySelector(`#${input.id}-error`);
   const field = document.querySelector(`#${input.id}`)
-  field.style.border = "1px solid #ff0033";
+  field.style.border = '1px solid #ff0033';
   fieldError.textContent = msg
-  fieldError.style.display = "block";
+  fieldError.style.display = 'block';
   isValid = false
 }
 
@@ -148,8 +148,8 @@ function clearError(input){
   const fieldError = document.querySelector(`#${input.id}-error`);
   const field = document.querySelector(`#${input.id}`);
 
-  field.style.border = "1px solid #2ecc71";
-  fieldError.style.display = "none";
+  field.style.border = '1px solid #2ecc71';
+  fieldError.style.display = 'none';
   
 }
 
@@ -170,7 +170,7 @@ function isName(name){
 }
 
 
-// const counter = document.querySelector("#name-counter")
+// const counter = document.querySelector('#name-counter')
 // console.log(counter.textContent)
 
 

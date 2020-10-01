@@ -1,34 +1,34 @@
-import utils from "./utils.js"
+import utils from './utils.js'
 
-let userValue = localStorage.getItem("users")
-let loggedinUser = localStorage.getItem("loggedin")
+let userValue = localStorage.getItem('users')
+let loggedinUser = localStorage.getItem('loggedin')
 
 if(loggedinUser === null){
 
   if (userValue === null) {
     let value = '[]';
-    localStorage.setItem("users", value);
+    localStorage.setItem('users', value);
     loginAction()
-    // location.href = "/register.html";
+    // location.href = '/register.html';
   } else {
     loginAction()
   }
 
 }
 else{
-  location.href = "/home.html"
+  location.href = '/home.html'
 }
 
 function loginAction(){
-  let fields = document.querySelectorAll("input");
-  let loginBtn = document.querySelector("#login-button");
+  let fields = document.querySelectorAll('input');
+  let loginBtn = document.querySelector('#login-button');
 
-  loginBtn.addEventListener("click", function () {
-    utils.retrieveObjects("users", function (data) {
+  loginBtn.addEventListener('click', function () {
+    utils.retrieveObjects('users', function (data) {
       let dataString = JSON.stringify(data)
       
       if (dataString == '[]') { 
-        setError(fields[0], "No user exist")
+        setError(fields[0], 'No user exist')
       }
       else{
         for (let user of data) {
@@ -37,15 +37,15 @@ function loginAction(){
             if (fields[1].value == user.password) {
               clearError(fields[1])
               let nameOfUser = `${user.firstname} ${user.lastname}`
-              localStorage.setItem("loggedin", nameOfUser)
-              location.href = "/home.html"
+              localStorage.setItem('loggedin', nameOfUser)
+              location.href = '/home.html'
             } else {
-              setError(fields[1],"Wrong password")
-              console.log("No password")
+              setError(fields[1],'Wrong password')
+              console.log('No password')
             }
           } else {
-            setError(fields[0], "No user found")
-            console.log("No user found")
+            setError(fields[0], 'No user found')
+            console.log('No user found')
           }
         }
       }
@@ -58,7 +58,7 @@ function loginAction(){
 // Setting the error
 function setError(input, msg) {
   const errorField = document.querySelector(`.${input.id}-error`)
-  input.style.border = "1px solid #ff0033"
+  input.style.border = '1px solid #ff0033'
   errorField.textContent = msg
 }
 
@@ -66,7 +66,7 @@ function setError(input, msg) {
 // Clearing errors
 function clearError(input) {
   const fieldError = document.querySelector(`.${input.id}-error`)
-  input.style.border = "1px solid #2ecc71"
-  fieldError.textContent = ""
+  input.style.border = '1px solid #2ecc71'
+  fieldError.textContent = ''
 }
 

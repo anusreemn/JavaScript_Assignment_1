@@ -1,16 +1,16 @@
-import utils from "./utils.js"
+import utils from './utils.js'
 
 // All input fields
-let passwordInput = document.querySelector("#password")  // password field
-let firstnameInput = document.querySelector("#firstname")  // First name field
-let lastnameInput = document.querySelector("#lastname") // Last name field
-let dateofbirthInput = document.querySelector("#dob") // date of birth field
-dateofbirthInput.defaultValue = "2014-02-09"
+let passwordInput = document.querySelector('#password')  // password field
+let firstnameInput = document.querySelector('#firstname')  // First name field
+let lastnameInput = document.querySelector('#lastname') // Last name field
+let dateofbirthInput = document.querySelector('#dob') // date of birth field
+dateofbirthInput.defaultValue = '2014-02-09'
 let dropdown = document.querySelector('select')  // Gender field
-let terms = document.querySelector("#termsAndConditions") // Terms and conditions
+let terms = document.querySelector('#termsAndConditions') // Terms and conditions
 
-let forValidation = document.querySelectorAll(".validate")  // Fields for validation
-let registerBtn = document.querySelector("#register-button")  // Register button
+let forValidation = document.querySelectorAll('.validate')  // Fields for validation
+let registerBtn = document.querySelector('#register-button')  // Register button
 
 let isValid = true
 
@@ -33,19 +33,19 @@ registerBtn.addEventListener('click',function(){
           password:passwordInput.value
         }
 
-        utils.storeObjects("users",user)
+        utils.storeObjects('users',user)
         popup()
       } else {
-        setError(confirmField, "Passwords does not match.");
+        setError(confirmField, 'Passwords does not match.');
         isValid = true;
       }
     }
     else{
-      alert("Please accept the terms and conditions.")
+      alert('Please accept the terms and conditions.')
     }
     
   } else {
-    console.log("Not Valid");
+    console.log('Not Valid');
     isValid = true;
   }
 
@@ -69,13 +69,13 @@ function validate(field){
     setError(field, `${field.name} cannot be blank.`);
   }
   else{
-    if (field.name == "firstname" || field.name == "lastname") {
+    if (field.name == 'firstname' || field.name == 'lastname') {
       validateName(field);
     } 
-    else if (field.name == "password") {
+    else if (field.name == 'password') {
       validatePassword(field)
     }
-    else if(field.name == "password-confirm"){
+    else if(field.name == 'password-confirm'){
       confirmPassword(field)
     }
   }
@@ -88,7 +88,7 @@ function validateName(input) {
     return false;
   } else {
     if (!isName(input.value)) {
-      setError(input, "Name is invalid!");
+      setError(input, 'Name is invalid!');
       return false;
     } else {
       clearError(input);
@@ -107,7 +107,7 @@ function validatePassword(input){
     if(!isPass(input.value)){
       setError(
         input,
-        "password should contain atleast one number and one special character"
+        'password should contain atleast one number and one special character'
       );
       return false;
     }
@@ -144,7 +144,7 @@ function isPass(password){
 // Setting the error
 function setError(input,msg){
   const errorField = document.querySelector(`.${input.id}-error`)
-  input.style.border = "1px solid #ff0033"
+  input.style.border = '1px solid #ff0033'
   errorField.textContent = msg
   isValid = false
 }
@@ -152,14 +152,14 @@ function setError(input,msg){
 // Clearing errors
 function clearError(input){
   const fieldError = document.querySelector(`.${input.id}-error`)
-  input.style.border = "1px solid #2ecc71"
-  fieldError.textContent = ""
+  input.style.border = '1px solid #2ecc71'
+  fieldError.textContent = ''
 }
 
 
 // Validate on blur
 for(let each of forValidation){
-  each.addEventListener("blur", function (e) {
+  each.addEventListener('blur', function (e) {
     validate(e.target);
   });
 }
@@ -181,14 +181,14 @@ function createUser(firstname,lastname,dob,gender,password){
   }
   
   console.log(userObj);
-  utils.storeObjects("users",userObj)
+  utils.storeObjects('users',userObj)
 }
 
 // Make the popup
 function popup(){
-  let body = document.querySelector(".register-body")
-  let popupCard = document.querySelector(".popup")
+  let body = document.querySelector('.register-body')
+  let popupCard = document.querySelector('.popup')
 
-  body.classList.toggle("blur")
-  popupCard.classList.toggle("active")
+  body.classList.toggle('blur')
+  popupCard.classList.toggle('active')
 }
