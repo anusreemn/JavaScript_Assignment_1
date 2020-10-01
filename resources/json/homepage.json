@@ -7,25 +7,25 @@
       {
         "tittle": "Job Id",
         "sortable": true,
-        "type": "string",
+        "type": "number",
         "id": "jobId"
       },
       {
         "tittle": "Job Tittle",
         "sortable": false,
-        "type": "link",
+        "type": "string",
         "id": "jobTittle"
       },
       {
         "tittle": "Location",
         "sortable": true,
-        "type": "number",
+        "type": "link",
         "id": "location"
       },
       {
         "tittle": "Last date",
         "sortable": true,
-        "type": "string",
+        "type": "date",
         "id": "lastDate"
       },
       {
