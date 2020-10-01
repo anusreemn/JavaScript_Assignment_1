@@ -24,19 +24,19 @@ function loginAction(){
   let loginBtn = document.querySelector("#login-button");
 
   loginBtn.addEventListener("click", function () {
-    utils.retreiveObjects("users", function (data) {
+    utils.retrieveObjects("users", function (data) {
       let dataString = JSON.stringify(data)
       
       if (dataString == '[]') { 
         setError(fields[0], "No user exist")
       }
       else{
-        for (let each_option of data) {
-          if (fields[0].value == each_option.firstname) {
+        for (let user of data) {
+          if (fields[0].value == user.firstname) {
             clearError(fields[0])
-            if (fields[1].value == each_option.password) {
+            if (fields[1].value == user.password) {
               clearError(fields[1])
-              let nameOfUser = `${each_option.firstname} ${each_option.lastname}`
+              let nameOfUser = `${user.firstname} ${user.lastname}`
               localStorage.setItem("loggedin", nameOfUser)
               location.href = "/home.html"
             } else {

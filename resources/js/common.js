@@ -5,9 +5,10 @@ window.onload = (event) => {
   var obj;
   var index;
 
-  var welcomeTextbox = document.querySelector(".welcome-text")
+  var welcomeTextBox = document.querySelector(".welcome-text")
   var logoutBtn = document.querySelector('.logout')
-  welcomeTextbox.textContent = `Hi ${localStorage.getItem("loggedin")}`;
+
+  welcomeTextBox.textContent = `Hi ${localStorage.getItem("loggedin")}`;
   logoutBtn.addEventListener('click', function () {
     localStorage.removeItem("loggedin")
     location.href = "/login.html"
@@ -20,10 +21,10 @@ window.onload = (event) => {
   utils.jsonCaller('get','resources/json/menu.json',function(menuObj){
   
     obj = menuObj
-    for (let each_option of menuObj) {
-      let menuElements = createMenu(each_option.label, each_option.link, each_option.status)
+    for (let menu of menuObj) {
+      let menuElements = createMenu(menu.label, menu.link, menu.status)
       menuList.appendChild(menuElements)
-      createHeading(each_option)
+      createHeading(menu)
     }
   })
 
@@ -64,14 +65,14 @@ window.onload = (event) => {
   // Blog post section
   let postLists = document.querySelector(".posts")
   utils.jsonCaller('get',"resources/json/blogpost.json", function(blogObj){
-     for(let each_option of blogObj){
-       let blogPost = createPost(each_option.tittle, each_option.image)
+     for(let blog of blogObj){
+       let blogPost = createPost(blog.tittle, blog.image)
        postLists.appendChild(blogPost)
      }
   })
 
 
-  function createPost(tittle, imglink) {
+  function createPost(tittle, imgLink) {
     const postElement = document.createElement("li");
     const postLink = document.createElement("a");
 
@@ -83,7 +84,7 @@ window.onload = (event) => {
     postText.textContent = tittle;
 
     const postImg = document.createElement("img");
-    postImg.src = imglink;
+    postImg.src = imgLink;
 
     postLinkDiv.appendChild(postText);
     postLinkDiv.appendChild(postImg);

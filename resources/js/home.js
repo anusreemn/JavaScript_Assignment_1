@@ -4,37 +4,6 @@ var fromMenuObj
 var indexContentObj
 var paraHeight
 
-// Welcome text
-
-
-
-// Heading of page from menu elements
-// const header = document.querySelector("#page-heading");
-
-// utils.jsonCaller('get','resources/json/menu.json',function(object){
-//   header.textContent = object[0].label
-// })
-
-// const headRequest = new XMLHttpRequest()
-
-// headRequest.onload = function(){
-//   if(this.status === 200){
-//     try{
-//       fromMenuObj = JSON.parse(this.responseText)
-//       // header.textContent = fromMenuObj[0].label
-//     }
-//     catch{
-//       console.warn("JSON not parsed")
-//     }
-//   }
-//   else{
-//     console.warn("File not found")
-//   }
-// }
-
-// headRequest.open("get", "resources/json/menu.json")
-// headRequest.send()
-
 
 // Loading Contents for Homepage
 const contentRequest = new XMLHttpRequest()
