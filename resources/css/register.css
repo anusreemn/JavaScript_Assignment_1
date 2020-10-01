@@ -138,10 +138,13 @@ form p{text-align: right;}
 
 .checkbox-group{
   margin: 0 auto;
+  text-align: center;
 }
 .checkbox-group input{
   margin-top: 15px;
 }
+
+.checkbox-group p{display: none;}
 
 a{
   width: 100%;

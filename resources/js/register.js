@@ -8,6 +8,7 @@ let dateofbirthInput = document.querySelector('#dob') // date of birth field
 dateofbirthInput.defaultValue = '2014-02-09'
 let dropdown = document.querySelector('select')  // Gender field
 let terms = document.querySelector('#termsAndConditions') // Terms and conditions
+let termsError = document.querySelector('#termsError')  // Terms and conditions error field
 
 let forValidation = document.querySelectorAll('.validate')  // Fields for validation
 let registerBtn = document.querySelector('#register-button')  // Register button
@@ -41,7 +42,7 @@ registerBtn.addEventListener('click',function(){
       }
     }
     else{
-      alert('Please accept the terms and conditions.')
+      termsError.style.display = "block"
     }
     
   } else {
@@ -192,3 +193,14 @@ function popup(){
   body.classList.toggle('blur')
   popupCard.classList.toggle('active')
 }
+
+termsError.addEventListener('change',function(e){
+  if(termsError.checked){
+    termsError.style.display = "none"
+    console.log("check")
+  }
+  else{
+    termsError.style.display = "block"
+    console.log("not check")
+  }
+})
