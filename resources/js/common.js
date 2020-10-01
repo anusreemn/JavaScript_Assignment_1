@@ -1,64 +1,73 @@
 import utils from './utils.js'
-// import testCall from './jsonCall.js'
+
 window.onload = (event) => {
   
   var obj;
-  var index;
 
-  var welcomeTextBox = document.querySelector('.welcome-text')
-  var logoutBtn = document.querySelector('.logout')
+  menuLoader()
+  welcomeText()
 
-  welcomeTextBox.textContent = `Hi ${localStorage.getItem('loggedin')}`;
-  logoutBtn.addEventListener('click', function () {
-    localStorage.removeItem('loggedin')
-    location.href = '/login.html'
-  })
+  function welcomeText(){
+    var welcomeTextBox = document.querySelector('.welcome-text')
+    var logoutBtn = document.querySelector('.logout')
 
-  // Menu handler
-  const menuList = document.querySelector('#nav-menus')
-  const header = document.querySelector('#page-heading')
-
-  utils.jsonCaller('get','resources/json/menu.json',function(menuObj){
-  
-    obj = menuObj
-    for (let menu of menuObj) {
-      let menuElements = createMenu(menu.label, menu.link, menu.status)
-      menuList.appendChild(menuElements)
-      createHeading(menu)
-    }
-  })
-
-  // Event handling of menu
-  menuList.addEventListener('click',function(evt){
-    let status = evt.target.getAttribute('data-status')
-   
-    if (status == 'true'){
-      window.location.assign(evt.target.getAttribute('data-link'))
-    }
-    else{
-      window.location.assign('/404.html')
-    }
-  })
-
-  // Function for setting heading
-  function createHeading(input){
-    let currentPath = location.pathname
-    if (currentPath == input.link){
-      header.textContent = input.label
-    }
+    console.log("active")
+    welcomeTextBox.textContent = `Hi ${localStorage.getItem('loggedin')}`;
+    logoutBtn.addEventListener('click', function () {
+      localStorage.removeItem('loggedin')
+      location.href = '/login.html'
+    })
   }
 
-  // Function for creating menu elements
-  function createMenu(content, link, status) {
-    const menuElement = document.createElement('li');
-    const menuLink = document.createElement('a');
-    menuLink.href = '#';
-    menuLink.setAttribute('data-link',link)
-    menuLink.setAttribute('data-status', status)
-    menuLink.className += 'menu-link';
-    menuLink.textContent = content;
-    menuElement.appendChild(menuLink);
-    return menuElement;
+  function menuLoader(){
+    console.log("active")
+    const menuList = document.querySelector('#nav-menus')
+    const header = document.querySelector('#page-heading')
+
+    utils.jsonCaller('get', 'resources/json/menu.json', function (menuObj) {
+
+      obj = menuObj
+      for (let menu of menuObj) {
+        let menuElements = createMenu(menu.label, menu.link, menu.status)
+        menuList.appendChild(menuElements)
+        createHeading(menu)
+      }
+    })
+
+    // Event handling of menu
+    menuList.addEventListener('click', function (evt) {
+      let status = evt.target.getAttribute('data-status')
+
+      if (status == 'true') {
+        window.location.assign(evt.target.getAttribute('data-link'))
+      }
+      else {
+        window.location.assign('/404.html')
+      }
+    })
+
+
+    // Function for creating menu elements
+    function createMenu(content, link, status) {
+      const menuElement = document.createElement('li');
+      const menuLink = document.createElement('a');
+      menuLink.href = '#';
+      menuLink.setAttribute('data-link', link)
+      menuLink.setAttribute('data-status', status)
+      menuLink.className += 'menu-link';
+      menuLink.textContent = content;
+      menuElement.appendChild(menuLink);
+      return menuElement;
+    }
+
+
+    // Function for setting heading
+    function createHeading(input) {
+      let currentPath = location.pathname
+      if (currentPath == input.link) {
+        header.textContent = input.label
+      }
+    }
   }
 
 
