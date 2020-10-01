@@ -164,7 +164,7 @@ function isEmail(email){
   return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
 }
 
-// Name validation using regular expressions
+// Name validation using regular expressions (returns true or false)
 function isName(name){
   return /^[A-Za-z\s]+$/.test(name)
 }

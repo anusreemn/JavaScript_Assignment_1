@@ -2,15 +2,15 @@ import utils from "./utils.js"
 
 // All input fields
 let passwordInput = document.querySelector("#password")  // password field
-let firstnameInput = document.querySelector("#firstname")  // Firstname field
-let lastnameInput = document.querySelector("#lastname") // Lastname field
+let firstnameInput = document.querySelector("#firstname")  // First name field
+let lastnameInput = document.querySelector("#lastname") // Last name field
 let dateofbirthInput = document.querySelector("#dob") // date of birth field
 dateofbirthInput.defaultValue = "2014-02-09"
 let dropdown = document.querySelector('select')  // Gender field
-let terms = document.querySelector("#t-and-c") // Terms and conditions
+let terms = document.querySelector("#termsAndConditions") // Terms and conditions
 
 let forValidation = document.querySelectorAll(".validate")  // Fields for validation
-let registerBtn = document.querySelector("#register-button")  // Register buton
+let registerBtn = document.querySelector("#register-button")  // Register button
 
 let isValid = true
 
@@ -19,7 +19,7 @@ let isValid = true
 registerBtn.addEventListener('click',function(){
   isValid = true 
   validateFields(forValidation)
-  // checkTandC()
+  
   if (isValid) {
     if(terms.checked){
       let confirmField = document.querySelector(`#${passwordInput.id}-confirm`);
@@ -36,7 +36,7 @@ registerBtn.addEventListener('click',function(){
         utils.storeObjects("users",user)
         popup()
       } else {
-        setError(confirmField, "Passwords doesnot match.");
+        setError(confirmField, "Passwords does not match.");
         isValid = true;
       }
     }
