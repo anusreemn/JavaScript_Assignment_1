@@ -11,7 +11,6 @@ window.onload = (event) => {
     var welcomeTextBox = document.querySelector('.welcome-text')
     var logoutBtn = document.querySelector('.logout')
 
-    console.log("active")
     welcomeTextBox.textContent = `Hi ${localStorage.getItem('loggedin')}`;
     logoutBtn.addEventListener('click', function () {
       localStorage.removeItem('loggedin')
@@ -20,7 +19,6 @@ window.onload = (event) => {
   }
 
   function menuLoader(){
-    console.log("active")
     const menuList = document.querySelector('#nav-menus')
     const header = document.querySelector('#page-heading')
 

@@ -5,38 +5,21 @@ var indexContentObj
 var paraHeight
 
 
-// Loading Contents for Homepage
-const contentRequest = new XMLHttpRequest()
+// Home page content loading
 const para = document.querySelector('#blog-paragraph')
 const imageArea = document.querySelector('.image-area')
 
-contentRequest.onload = function () {
-  if (this.status === 200) {
-    try {
-      indexContentObj = JSON.parse(this.responseText)
-      para.textContent = indexContentObj.Content
+utils.jsonCaller('get','resources/json/homepage.json',function(contentObj){
+  para.textContent = contentObj.content
 
-      const image = document.createElement('img')
-      image.src = indexContentObj.image
-      image.className += 'content-img';
-      imageArea.appendChild(image)
+  const image = document.createElement('img')
+  image.src = contentObj.image
+  image.className += 'content-img';
+  imageArea.appendChild(image)
 
-      paraResize()
-      
-    } catch {
-      console.warn('JSON not parsed')
-    }
-  } else {
-    console.warn('File not found')
-  }
-}
+  paraResize()
+})
 
-contentRequest.open('get', 'resources/json/homepage.json')
-contentRequest.send()
-
-
-
-// Read more functionality based on paragraph height
 
 const readMoreBtn = document.querySelector('.read-more')
 const readLessBtn = document.querySelector('.read-less')
@@ -53,19 +36,27 @@ function paraResize(){
   }
 }
 
-// Read less
+// Read less__
+readLessBtn.addEventListener('click',function(){
+  para.style.height = '200px'
+  readMoreBtn.style.display = 'block'
+  readLessBtn.style.display = 'none'
+})
+
 function readLess(){
   para.style.height = '200px'
   readMoreBtn.style.display = 'block'
   readLessBtn.style.display = 'none'
 }
 
-// Read more
-function readMore(){
+
+// Read more__
+readMoreBtn.addEventListener('click',function(){
   para.style.height = 'auto'
   readMoreBtn.style.display = 'none'
   readLessBtn.style.display = 'block'
-}
+})
+
 
   
 
