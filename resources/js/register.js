@@ -22,9 +22,9 @@ registerBtn.addEventListener('click',function(){
   validateFields(forValidation)
   
   if (isValid) {
-    if(terms.checked){
-      let confirmField = document.querySelector(`#${passwordInput.id}-confirm`);
-      if (confirmPassword(passwordInput)) {
+    let confirmField = document.querySelector(`#${passwordInput.id}-confirm`);
+    if (confirmPassword(passwordInput)){
+      if (terms.checked) {
         clearError(confirmField);
         let user = {
           firstname: firstnameInput.value,
@@ -37,12 +37,12 @@ registerBtn.addEventListener('click',function(){
         utils.storeObjects('users',user)
         popup()
       } else {
-        setError(confirmField, 'Passwords does not match.');
-        isValid = true;
+        termsError.style.display = "block"
       }
     }
     else{
-      termsError.style.display = "block"
+      setError(confirmField, 'Passwords does not match.');
+      isValid = true;
     }
     
   } else {
@@ -70,10 +70,10 @@ function validate(field){
     setError(field, `${field.name} cannot be blank.`);
   }
   else{
-    if (field.name == 'firstname' || field.name == 'lastname') {
+    if (field.name == 'First name' || field.name == 'Last name') {
       validateName(field);
     } 
-    else if (field.name == 'password') {
+    else if (field.name == 'Password') {
       validatePassword(field)
     }
     else if(field.name == 'password-confirm'){
@@ -108,7 +108,7 @@ function validatePassword(input){
     if(!isPass(input.value)){
       setError(
         input,
-        'password should contain atleast one number and one special character'
+        'password should contain at least one number and one special character'
       );
       return false;
     }
