@@ -173,8 +173,8 @@ th{
 
 td{
   background-color: #95e1f9;
-  padding: 5px 8px;
-  color: #fff;
+  padding: 10px 8px;
+  color: #000;
 }
 
 td:last-child{ text-align: center; }

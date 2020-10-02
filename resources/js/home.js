@@ -35,7 +35,27 @@ function loadTable(headerObj){
         let columnElement = document.createElement('td') 
         let key = headerValue.id
         let cellValue = contentValue[key] 
-        columnElement.textContent = cellValue
+        if(headerValue.type == 'link'){
+          let link = document.createElement('a')
+          link.href = cellValue
+          link.textContent = "Link"
+          columnElement.appendChild(link)
+        }
+        else if(headerValue.type == 'button'){
+          if(contentValue.status == 'open'){
+            let btn = document.createElement("button");
+            btn.textContent = "Apply Now";
+            columnElement.appendChild(btn);
+          }
+          else{
+            columnElement.textContent = " - "
+          }
+          
+        }
+        else{
+          columnElement.textContent = cellValue;
+        }
+        
         rowElement.appendChild(columnElement)
       }
       tableBody.appendChild(rowElement)
