@@ -32,9 +32,9 @@ function loadTable(headerObj){
     for(let contentValue of contentObj){
       let rowElement = document.createElement('tr')
       for(let headerValue of headerObj){
-        let columnElement = document.createElement('td')
-        console.log("cellValue");
-        let cellValue = contentValue.headerValue.id // issue starts here
+        let columnElement = document.createElement('td') 
+        let key = headerValue.id
+        let cellValue = contentValue[key] 
         columnElement.textContent = cellValue
         rowElement.appendChild(columnElement)
       }
@@ -62,7 +62,14 @@ function loadTable(headerObj){
 // Table sorting
 const tableHeader = document.querySelector("#table-head")
 tableHeader.addEventListener('click',function(e){
-  console.log(e.target.dataset["sortable"])
+  let header = e.target
+  if (header.dataset["sortable"] == 'true'){
+    console.log("sortable")
+    console.log(header.dataset['type'])
+  }
+  else{
+    console.log("Not sortable")
+  }
 })
 
 

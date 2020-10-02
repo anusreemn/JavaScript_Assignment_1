@@ -11,13 +11,13 @@
     },
     {
       "tittle": "Job Tittle",
-      "sortable": false,
+      "sortable": true,
       "type": "string",
       "id": "jobTittle"
     },
     {
       "tittle": "Location",
-      "sortable": true,
+      "sortable": false,
       "type": "link",
       "id": "location"
     },
