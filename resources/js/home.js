@@ -22,58 +22,56 @@ utils.jsonCaller('get','resources/json/homepage.json',function(object){
 
 // Table content loading
 function loadTable(headerObj){
-  const tableHeader = document.querySelector('#table-head')
-  const tableBody = document.querySelector('#table-body')
-  loadTableHead()
-
   // Load table body
   utils.jsonCaller('get', 'resources/json/vacancies.json', function (contentObj) {
+    tableLoader(headerObj,contentObj)
+  })
 
-    for(let contentValue of contentObj){
-      let rowElement = document.createElement('tr')
-      for(let headerValue of headerObj){
-        let columnElement = document.createElement('td') 
-        let key = headerValue.id
-        let cellValue = contentValue[key] 
-        if(headerValue.type == 'link'){
-          let link = document.createElement('a')
-          link.href = cellValue
-          link.textContent = "Link"
-          columnElement.appendChild(link)
-        }
-        else if(headerValue.type == 'button'){
-          if(contentValue.status == 'open'){
+  function tableLoader(headerObj, contentObj) {
+    const tableHeader = document.querySelector("#table-head");
+    const tableBody = document.querySelector("#table-body");
+    loadTableHead(tableHeader);
+
+    for (let contentValue of contentObj) {
+      let rowElement = document.createElement("tr");
+      for (let headerValue of headerObj) {
+        let columnElement = document.createElement("td");
+        let key = headerValue.id;
+        let cellValue = contentValue[key];
+        if (headerValue.type == "link") {
+          let link = document.createElement("a");
+          link.href = cellValue;
+          link.textContent = "Link";
+          columnElement.appendChild(link);
+        } else if (headerValue.type == "button") {
+          if (contentValue.status == "open") {
             let btn = document.createElement("button");
             btn.textContent = "Apply Now";
             columnElement.appendChild(btn);
+          } else {
+            columnElement.textContent = " - ";
           }
-          else{
-            columnElement.textContent = " - "
-          }
-          
-        }
-        else{
+        } else {
           columnElement.textContent = cellValue;
         }
-        
-        rowElement.appendChild(columnElement)
+        rowElement.appendChild(columnElement);
       }
-      tableBody.appendChild(rowElement)
+      tableBody.appendChild(rowElement);
     }
-  })
+  }
 
   // Load table headers
-  function loadTableHead() {
-    let headRow = document.createElement('tr')
-    for(let headValue of headerObj){
-      let headElement = document.createElement('th')
-      headElement.textContent = headValue.tittle
-      headElement.setAttribute("data-type",headValue.type)
-      headElement.setAttribute("data-sortable", headValue.sortable)
-      headElement.id = headValue.id
-      headRow.appendChild(headElement)
+  function loadTableHead(tableHeader) {
+    let headRow = document.createElement("tr");
+    for (let headValue of headerObj) {
+      let headElement = document.createElement("th");
+      headElement.textContent = headValue.tittle;
+      headElement.setAttribute("data-type", headValue.type);
+      headElement.setAttribute("data-sortable", headValue.sortable);
+      headElement.id = headValue.id;
+      headRow.appendChild(headElement);
     }
-    tableHeader.appendChild(headRow)
+    tableHeader.appendChild(headRow);
   }
 
 }
