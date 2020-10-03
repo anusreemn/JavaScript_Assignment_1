@@ -28,23 +28,18 @@ function loginAction(){
       let dataString = JSON.stringify(data)
       
       if (dataString == '[]') { 
-        setError(fields[0], 'No user exist')
+        setError('No user exist')
       }
       else{
         for (let user of data) {
-          if (fields[0].value == user.firstname) {
-            clearError(fields[0])
-            if (fields[1].value == user.password) {
-              clearError(fields[1])
-              let nameOfUser = `${user.firstname} ${user.lastname}`
-              localStorage.setItem('loggedin', nameOfUser)
-              location.href = '/home.html'
-            } else {
-              setError(fields[1],'Wrong password')
-              console.log('No password')
-            }
-          } else {
-            setError(fields[0], 'No user found')
+          if(fields[0].value == user.firstname && fields[1].value == user.password){
+            clearError(fields[1]);
+            let nameOfUser = `${user.firstname} ${user.lastname}`;
+            localStorage.setItem('loggedin', nameOfUser)
+            location.href = '/home.html'
+          }
+          else {
+            setError('Username or Password is incorrect')
             console.log('No user found')
           }
         }
@@ -56,17 +51,21 @@ function loginAction(){
 
 
 // Setting the error
-function setError(input, msg) {
-  const errorField = document.querySelector(`.${input.id}-error`)
-  input.style.border = '1px solid #ff0033'
+function setError(msg) {
+  const errorField = document.querySelector(".login-error");
   errorField.textContent = msg
 }
 
 
 // Clearing errors
-function clearError(input) {
-  const fieldError = document.querySelector(`.${input.id}-error`)
-  input.style.border = '1px solid #2ecc71'
+function clearError() {
+  const fieldError = document.querySelector(".login-error")
   fieldError.textContent = ''
 }
 
+let inputs = document.querySelectorAll('input')
+for (let each of inputs){
+  each.addEventListener('focus',function(){
+    clearError()
+  })
+}

@@ -65,8 +65,11 @@ body{
   flex-direction: column;
 }
 
-.username-error,
-.password-error{ color: #ff0033;}
+
+.login-error{ 
+  color: #ff0033;
+  text-align: center;
+}
 
 #login-button{
   width: 25%;
