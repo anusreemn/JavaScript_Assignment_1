@@ -54,7 +54,10 @@ function tableLoader(headerObj, contentObj) {
       } else if (headerValue.type == "button") {
         if (contentValue.status == "open") {
           let btn = document.createElement("button");
-          btn.textContent = "Apply Now";
+          btn.textContent = "Apply Now"
+          btn.onclick = function(e){
+            alert("Applies Successfully")
+          }
           columnElement.appendChild(btn);
         } else {
           columnElement.textContent = " - ";
@@ -150,6 +153,7 @@ function removeChildNode(parent){
     parent.removeChild(parent.firstChild)
   }
 }
+
 
 
 /*--------------- Paragraph resize and read more section ---------------*/
