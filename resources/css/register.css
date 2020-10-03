@@ -204,5 +204,38 @@ a{
 }
 
 
+/* Index page popup */
+.index-popup{
+  flex-direction: column;
+  justify-content: space-around;
+  position: fixed;
+  padding: 30px;
+  top: 40%;
+  visibility: hidden;
+  left: 50%;
+  width: 500px;
+  transform: translate(-50%,-50%);
+  background-color: #95e2f9;
+}
+
+.index-popup-heading{
+  text-align: center;
+}
+
+.index-popup-image{
+  margin: 10px auto;
+  width: 100px;
+  height: auto;
+}
+
+.index-btn{
+  text-decoration: none;
+  color: #000;
+  background-color: #fff;
+  padding: 10px 12px;
+  margin: 10px 0;
+}
+
+
 
 
