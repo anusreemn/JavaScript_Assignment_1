@@ -118,9 +118,8 @@ window.onload = (event) => {
   })
 
   searchBar.addEventListener("search", function (e) {
-    searchBar.textContent=""
     mainPara.textContent = backupContent
-  });
+  })
 
 
   // Drop down menu in mobile view
