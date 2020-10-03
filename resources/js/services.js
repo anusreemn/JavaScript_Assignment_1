@@ -68,3 +68,46 @@ function loadTableHead(tableHeader, headerObj){
   }
   tableHeader.appendChild(headRow);
 }
+
+// Table sorting Area  -------------//
+const tableHeader = document.querySelector("#table-head")
+tableHeader.addEventListener('click',function(e){
+  let header = e.target
+
+  if(header.dataset["sortable"] == 'true' && header.dataset['type'] == 'string'){
+    let element = document.querySelectorAll(`.${header.id}`)
+    let valueList = []
+
+    for (let each of element) {
+      valueList.push(each.textContent)
+    }
+    valueList.sort()
+    console.log(valueList)
+    newContentCreator(valueList,header.id)
+  }
+})
+
+
+function newContentCreator(valueList, key) {
+  let tableBody = document.querySelector("#table-body");
+  let tableHeader = document.querySelector("#table-head");
+  let newContentObj = [];
+
+  for (let values of valueList) {
+    for (let content of contentObj) {
+      if (values == content[key]) {
+        newContentObj.push(content);
+      }
+    }
+  }
+  removeChildNode(tableBody);
+  removeChildNode(tableHeader);
+  tableLoader(headerObj, newContentObj);
+}
+
+// Remove table content
+function removeChildNode(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
