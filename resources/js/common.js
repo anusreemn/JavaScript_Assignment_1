@@ -101,51 +101,29 @@ window.onload = (event) => {
     return postElement;
   }
 
-
-  //Table headings
-
-  const tableRequest = new XMLHttpRequest();
-
-  tableRequest.onload = function () {
-    if (this.status === 200) {
-      try {
-        const tableObj = JSON.parse(this.responseText);
-
-        // Add table headings
-        const tableHead = document.querySelector('#table-head');
-        const tableRow = document.createElement('tr');
-
-        for (i = 0; i < tableObj.heading.length; i++) {
-          const tableElement = document.createElement('th');
-          tableElement.textContent = tableObj.heading[i];
-
-          tableRow.appendChild(tableElement);
-
-          if (i == tableObj.heading.length - 1) {
-            tableHead.appendChild(tableRow);
-          }
-        }
-      } catch {
-        console.warn('JSON not parsed');
-      }
-    } else {
-      console.warn('File not found');
+  // Search filter
+  const searchBar = document.querySelector("#search")
+  const mainPara = document.querySelector("#blog-paragraph")
+  let backupContent = mainPara.textContent;
+  // const mainPara = document.querySelector(".content")
+  searchBar.addEventListener('keyup',function(){
+    let value = searchBar.value
+    let content = mainPara.textContent
+    if(content.indexOf(value) != -1){
+      mainPara.innerHTML = content.replaceAll(value,`<span id="highlight">${value}</span>`)
     }
-  };
+    else{
+      mainPara.innerHTML = content
+    }
+  })
 
-  tableRequest.open('get', 'resources/json/table.json');
-  tableRequest.send();
+  searchBar.addEventListener("search", function (e) {
+    searchBar.textContent=""
+    mainPara.textContent = backupContent
+  });
 
-  //Debugging fn
-  function check() {
-    console.log('foo');
-  }
 
-  // Dropdown button
-  // function dropDown() {
-  //   console.log('clicked');
-  // }
-
+  // Drop down menu in mobile view
   const dropDownButton = document.querySelector('.drop-down-button');
   dropDownButton.addEventListener('click', function () {
     const navigation = document.querySelector('.navigation');
