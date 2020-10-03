@@ -172,6 +172,7 @@ th{
 }
 
 td{
+  position: relative;
   background-color: #95e1f9;
   padding: 10px 8px;
   color: #000;
@@ -182,6 +183,7 @@ td:last-child{ text-align: center; }
 table button,
 .read-more,
 .read-less{ padding: 5px;}
+
 
 /*---- Right Section -------*/
 .right-section{

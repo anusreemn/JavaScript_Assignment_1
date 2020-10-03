@@ -64,6 +64,7 @@ function loadTableHead(tableHeader, headerObj){
     headElement.setAttribute("data-type", headValue.type);
     headElement.setAttribute("data-sortable", headValue.sortable);
     headElement.id = headValue.id;
+    
     headRow.appendChild(headElement);
   }
   tableHeader.appendChild(headRow);
