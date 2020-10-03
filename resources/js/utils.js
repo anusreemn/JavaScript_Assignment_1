@@ -42,7 +42,3 @@ let testcall = function (callback){
 let utils = { jsonCaller, testcall, storeObjects, retrieveObjects: retreiveObjects }
 export default utils
 
-// module.exports = {jsonCaller,testcall}
-// export default jsonCaller
-// export jsonCaller;
-// export default {jsonCaller,testcall}
