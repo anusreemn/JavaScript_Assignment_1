@@ -90,12 +90,13 @@ body{
 /*-------------------------*/
 /*------ Register Page ----*/
 /*-------------------------*/
+.register-card-head{ padding: 10px 40px;}
 
 .register-body{ 
   height: auto;
   position: relative;
   width: 100vw;
-  background-color:#66c5e4;
+  background-color:#fff;
 }
 
 .register-form{
