@@ -20,6 +20,17 @@ body{
 
 .flex-box{display: flex;}
 
+.styled-btn{
+ background-color: #95e2f9;
+ border: 1px solid #95e2f9;
+ transition: all 0.2s;
+ cursor: pointer;
+}
+
+.styled-btn:hover{
+  background-color: #66c5e4;
+  border: 1px solid #95e2f9;
+}
 
 
 /*-------------------------*/
@@ -34,8 +45,7 @@ body{
 }
 
 .login-card{
-  background-color:#95e2f9;
-  border-radius: 10px;
+  background-color:#fff;
   margin: 100px auto;
   width: 30%;
   box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
@@ -43,6 +53,7 @@ body{
 }
 
 .login-head{
+  background-color:#95e2f9;
   padding: 10px;
   justify-content: space-between;
 }
