@@ -30,7 +30,7 @@ body{
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color:#66c5e4;
+  background-color:#fff;
 }
 
 .login-card{
@@ -40,6 +40,16 @@ body{
   width: 30%;
   box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
   height: auto;
+}
+
+.login-head{
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.login-logo{ height: 30px;}
+.login-head-text{
+  margin: auto 0;
 }
 
 .login-form{
