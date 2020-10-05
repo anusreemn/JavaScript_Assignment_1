@@ -43,6 +43,10 @@ function tableLoader(headerObj,contentObj){
          } else {
            columnElement.textContent = " - ";
          }
+       } else if (headerValue.type == "number" || headerValue.type == "date") {
+         columnElement.style.textAlign = "right";
+         columnElement.textContent = cellValue;
+         columnElement.className = key;
        } else {
          columnElement.textContent = cellValue;
          columnElement.className = key;
