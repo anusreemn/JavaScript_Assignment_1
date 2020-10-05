@@ -21,6 +21,21 @@ body{
 .flex-box{display: flex;}
 
 
+.styled-btn-white{
+ background-color: #95e1f9;
+ border: 1px solid #000;
+ transition: all 0.2s;
+ cursor: pointer;
+ color: #000;
+}
+
+.styled-btn-white:hover{
+  background-color: #fff;
+ border: 1px solid #fff;
+}
+
+
+
 /*-------------------------*/
 /*------ HEADER -----------*/
 /*-------------------------*/
@@ -65,6 +80,7 @@ header h1{
   /* background-color: #018dad; */
   justify-content: space-between;
   padding: 0 10px;
+  margin-top: 10px;
 }
 
 .welcome-text{
@@ -72,7 +88,7 @@ header h1{
 }
 
 .logout{
-  padding: 2px;
+  padding: 5px 8px;
 }
 
 #highlight{

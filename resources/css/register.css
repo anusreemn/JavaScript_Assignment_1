@@ -20,6 +20,17 @@ body{
 
 .flex-box{display: flex;}
 
+.styled-btn{
+ background-color: #95e2f9;
+ border: 1px solid #95e2f9;
+ transition: all 0.2s;
+ cursor: pointer;
+}
+
+.styled-btn:hover{
+  background-color: #66c5e4;
+  border: 1px solid #95e2f9;
+}
 
 
 /*-------------------------*/
@@ -30,16 +41,26 @@ body{
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color:#66c5e4;
+  background-color:#fff;
 }
 
 .login-card{
-  background-color:#95e2f9;
-  border-radius: 10px;
+  background-color:#fff;
   margin: 100px auto;
   width: 30%;
   box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
   height: auto;
+}
+
+.login-head{
+  background-color:#95e2f9;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.login-logo{ height: 30px;}
+.login-head-text{
+  margin: auto 0;
 }
 
 .login-form{
@@ -83,12 +104,13 @@ body{
 /*-------------------------*/
 /*------ Register Page ----*/
 /*-------------------------*/
+.register-card-head{ padding: 10px 40px;}
 
 .register-body{ 
   height: auto;
   position: relative;
   width: 100vw;
-  background-color:#66c5e4;
+  background-color:#fff;
 }
 
 .register-form{
@@ -99,8 +121,7 @@ body{
 
 .register-card{ 
   margin-top: 30px;
-  background-color:#95e2f9;
-  border-radius: 10px;
+  background-color:#fff;
   margin: 100px auto;
   width: 40%;
   box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
