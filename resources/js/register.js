@@ -5,7 +5,7 @@ let passwordInput = document.querySelector('#password')  // password field
 let firstnameInput = document.querySelector('#firstname')  // First name field
 let lastnameInput = document.querySelector('#lastname') // Last name field
 let dateofbirthInput = document.querySelector('#dob') // date of birth field
-dateofbirthInput.defaultValue = '2014-02-09'
+// dateofbirthInput.defaultValue = '2014-02-09'
 let dropdown = document.querySelector('select')  // Gender field
 let terms = document.querySelector('#termsAndConditions') // Terms and conditions
 let termsError = document.querySelector('#termsError')  // Terms and conditions error field
@@ -62,9 +62,6 @@ function validateFields(fields){
 }
 
 function validate(field){
-  let validFirstname = false
-  let validLastname = false
-  let validPassword = false
 
   if(field.required && field.value.length == 0){
     setError(field, `${field.name} cannot be blank.`);
@@ -78,6 +75,9 @@ function validate(field){
     }
     else if(field.name == 'password-confirm'){
       confirmPassword(field)
+    }
+    else if(field.name == 'Date of birth'){
+      validateDate(field)
     }
   }
 }
@@ -130,6 +130,35 @@ function confirmPassword(input){
   }
 }
 
+// Dob validation
+function validateDate(input){
+  let d = new Date();
+  // console.log(d.getFullYear());
+  // console.log(d.getMonth() + 1);
+  // console.log(d.getDate());
+  let dateInput = input.value.split("-")
+  let userYear = dateInput[0]
+  let userMonth = dateInput[1]
+  let userDay = dateInput[2]
+
+  if (userYear <= d.getFullYear() && 
+  (userMonth <= d.getMonth()+1 || userMonth <= `0${d.getMonth()+1}`) && 
+  (userDay <= d.getDate() || userDay <= `0${d.getDate()}`)) {
+    clearError(input)
+  }
+  else{
+    setError(input,'You are not born yet!')
+  }
+
+  if(userMonth[0] == 0){
+    console.log(userMonth.indexOf('0'));
+  }
+  
+  
+  // console.log(`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`);
+  
+}
+
 
 
 // Name validation using regular expressions
@@ -141,6 +170,13 @@ function isPass(password){
   return /^[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password);
   // Reffer: https://stackoverflow.com/questions/12090077/javascript-regular-expression-password-validation-having-special-characters
 }
+dateofbirthInput.addEventListener('focus',function(){
+  this.type = 'date'
+})
+
+dateofbirthInput.addEventListener("blur", function () {
+  this.type = 'text'
+});
 
 // Setting the error
 function setError(input,msg){
