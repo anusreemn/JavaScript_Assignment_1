@@ -14,15 +14,15 @@ utils.jsonCaller("get", "resources/json/services.json",function(object){
 function loadTable(headerObj){
   utils.jsonCaller("get", "resources/json/offices.json",function(object){
     contentObj = object
-    tableLoader(headerObj,contentObj)
+    tableLoader(headerObj,contentObj,'asc')
   })
 }
 
-function tableLoader(headerObj,contentObj){
+function tableLoader(headerObj,contentObj,order){
   const tableHeader = document.querySelector("#table-head")
   const tableBody = document.querySelector("#table-body")
 
-  loadTableHead(tableHeader, headerObj)
+  loadTableHead(tableHeader, headerObj,order)
 
    for (let contentValue of contentObj) {
      let rowElement = document.createElement("tr");
@@ -60,7 +60,7 @@ function tableLoader(headerObj,contentObj){
 
 
 // Header loading function
-function loadTableHead(tableHeader, headerObj){
+function loadTableHead(tableHeader, headerObj,order){
   let headRow = document.createElement("tr");
   for (let headValue of headerObj) {
     let headElement = document.createElement("th");
@@ -68,6 +68,35 @@ function loadTableHead(tableHeader, headerObj){
     headElement.setAttribute("data-type", headValue.type);
     headElement.setAttribute("data-sortable", headValue.sortable);
     headElement.id = headValue.id;
+
+    if (order == "asc") {
+      headElement.className += "asc";
+    } else {
+      headElement.className += "des";
+    }
+
+    if (headValue.sortable == true) {
+      let iconHolder = document.createElement("div"); // Creates a div to hold the icons
+      iconHolder.className = "icon-holder";
+      let upArrow = document.createElement("ion-icon");
+      upArrow.name = "chevron-up-outline";
+      upArrow.className = `${headValue.id}-up-arrow`; // Maps the icon and header column using class name
+      iconHolder.appendChild(upArrow);
+      let downArrow = document.createElement("ion-icon");
+      downArrow.name = "chevron-down-outline";
+      downArrow.className = `${headValue.id}-down-arrow`; // Maps the icon and header column using class name
+
+      if (order == "asc") {
+        upArrow.style.visibility = "visible";
+        downArrow.style.visibility = "hidden";
+      } else {
+        upArrow.style.visibility = "hidden";
+        downArrow.style.visibility = "visible";
+      }
+
+      iconHolder.appendChild(downArrow);
+      headElement.appendChild(iconHolder);
+    }
     
     headRow.appendChild(headElement);
   }
@@ -86,14 +115,23 @@ tableHeader.addEventListener('click',function(e){
     for (let each of element) {
       valueList.push(each.textContent)
     }
-    valueList.sort()
-    console.log(valueList)
-    newContentCreator(valueList,header.id)
+
+    if (header.className == "asc") {
+      console.log("asc");
+      var nextOrder = "des";
+      valueList.sort();
+      newContentCreator(valueList, header.id, nextOrder);
+    } else {
+      console.log("des");
+      var nextOrder = "asc";
+      valueList.reverse();
+      newContentCreator(valueList, header.id, nextOrder);
+    }
   }
 })
 
 
-function newContentCreator(valueList, key) {
+function newContentCreator(valueList, key,newOrder) {
   let tableBody = document.querySelector("#table-body");
   let tableHeader = document.querySelector("#table-head");
   let newContentObj = [];
@@ -107,7 +145,7 @@ function newContentCreator(valueList, key) {
   }
   removeChildNode(tableBody);
   removeChildNode(tableHeader);
-  tableLoader(headerObj, newContentObj);
+  tableLoader(headerObj, newContentObj,newOrder);
 }
 
 // Remove table content
