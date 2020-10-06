@@ -136,23 +136,43 @@ function validateDate(input){
   // console.log(d.getFullYear());
   // console.log(d.getMonth() + 1);
   // console.log(d.getDate());
+  
   let dateInput = input.value.split("-")
-  let userYear = dateInput[0]
-  let userMonth = dateInput[1]
-  let userDay = dateInput[2]
+  let userYear = parseInt(dateInput[0])
+  let userMonth = parseInt(dateInput[1])
+  let userDay = parseInt(dateInput[2])
 
-  if (userYear <= d.getFullYear() && 
-  (userMonth <= d.getMonth()+1 || userMonth <= `0${d.getMonth()+1}`) && 
-  (userDay <= d.getDate() || userDay <= `0${d.getDate()}`)) {
-    clearError(input)
+  if(userYear > d.getFullYear()){
+    setError(input, "You are not born yet!")
+  }
+  else if(userYear == d.getFullYear()){
+    if (userMonth > d.getMonth() + 1 || userMonth > `0${d.getMonth() + 1}`) {
+      setError(input, "You are not born yet!");
+    } 
+    else if(userMonth == d.getMonth() + 1 || userMonth == `0${d.getMonth() + 1}`){
+      if (userDay >= d.getDate() || userDay >= `0${d.getDate()}`) {
+        setError(input, "You are not born yet!");
+      }
+      else{
+        clearError(input)
+      }
+    }
+    else {
+      clearError(input)
+    }
   }
   else{
-    setError(input,'You are not born yet!')
+    clearError(input)
   }
 
-  if(userMonth[0] == 0){
-    console.log(userMonth.indexOf('0'));
-  }
+  // if (userYear <= d.getFullYear() && 
+  // (userMonth <= d.getMonth()+1 || userMonth <= `0${d.getMonth()+1}`) && 
+  // (userDay <= d.getDate() || userDay <= `0${d.getDate()}`)) {
+  //   clearError(input)
+  // }
+  // else{
+  //   setError(input,'You are not born yet!')
+  // }
   
   
   // console.log(`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`);
