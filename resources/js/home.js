@@ -28,53 +28,47 @@ function loadTable(headerObj){
   // Load table body
   utils.jsonCaller('get', 'resources/json/vacancies.json', function (object) {
     contentObj = object
-    tableLoader(headerObj,contentObj,'asc')
+    tableLoader(headerObj,contentObj,'asc',null)
   })
 }
 
 // Actual function to load table (Takes in two objects)
-function tableLoader(headerObj, contentObj,order) {
-  
-  const tableHeader = document.querySelector("#table-head")   
-  const tableBody = document.querySelector("#table-body")
-  loadTableHead(tableHeader,headerObj,order);
- 
+function tableLoader(headerObj, contentObj, order, clickedId) {
+  const tableHeader = document.querySelector("#table-head");
+  const tableBody = document.querySelector("#table-body");
+  loadTableHead(tableHeader, headerObj, order, clickedId);
+
   for (let contentValue of contentObj) {
-    
     let rowElement = document.createElement("tr");
     for (let headerValue of headerObj) {
       let columnElement = document.createElement("td");
       let key = headerValue.id;
       let cellValue = contentValue[key];
 
-      let icon = document.createElement('ion-icon')
-      icon.name = 'heart'
+      let icon = document.createElement("ion-icon");
+      icon.name = "heart";
 
       if (headerValue.type == "link") {
         let link = document.createElement("a");
         link.href = cellValue;
         link.textContent = "Link";
         columnElement.appendChild(link);
-      } 
-      else if (headerValue.type == "button") {
+      } else if (headerValue.type == "button") {
         if (contentValue.status == "open") {
           let btn = document.createElement("button");
-          btn.textContent = "Apply Now"
-          btn.onclick = function(e){
-            alert("Applies Successfully")
-          }
+          btn.textContent = "Apply Now";
+          btn.onclick = function (e) {
+            alert("Applies Successfully");
+          };
           columnElement.appendChild(btn);
-        } 
-        else {
+        } else {
           columnElement.textContent = " - ";
         }
-      }
-      else if (headerValue.type == "number" || headerValue.type == "date") {
+      } else if (headerValue.type == "number" || headerValue.type == "date") {
         columnElement.style.textAlign = "right";
         columnElement.textContent = cellValue;
         columnElement.className = key;
-      } 
-      else {
+      } else {
         columnElement.textContent = cellValue;
         columnElement.className = key;
       }
@@ -87,7 +81,7 @@ function tableLoader(headerObj, contentObj,order) {
 
 
 // Load table headers
-function loadTableHead(tableHeader, headerObj,order) {
+function loadTableHead(tableHeader, headerObj,order,clickedId) {
   let headRow = document.createElement("tr");
   for (let headValue of headerObj) {
     let headElement = document.createElement("th");
@@ -114,16 +108,22 @@ function loadTableHead(tableHeader, headerObj,order) {
       downArrow.name = "chevron-down-outline";
       downArrow.className = `${headValue.id}-down-arrow`; // Maps the icon and header column using class name
 
-      if (order == 'asc'){
-        upArrow.style.visibility = 'visible'
-        downArrow.style.visibility = 'hidden'
+      if (clickedId != null){
+        var upIcon = document.querySelector('.JobId-up-arrow')
+        let downIcon = document.querySelector(`.${clickedId}-down-arrow`);
+        console.log(upIcon);
+        console.log(`.${clickedId}-down-arrow`);
       }
-      else{
-        upArrow.style.visibility = "hidden";
-        downArrow.style.visibility = "visible";
-      }
+        // if (order == 'asc'){
+        //   upArrow.style.visibility = 'visible'
+        //   downArrow.style.visibility = 'hidden'
+        // }
+        // else{
+        //   upArrow.style.visibility = "hidden";
+        //   downArrow.style.visibility = "visible";
+        // }
 
-      iconHolder.appendChild(downArrow);
+        iconHolder.appendChild(downArrow);
       headElement.appendChild(iconHolder);
     }
     headRow.appendChild(headElement);
@@ -169,12 +169,10 @@ tableHeader.addEventListener('click',function(e){
     }
 
     if (header.className == "asc") {
-      console.log("asc");
       var nextOrder = "des";
       valueList.sort();
       newContentCreator(valueList, header.id, nextOrder);
     } else {
-      console.log("des");
       var nextOrder = "asc";
       valueList.reverse();
       newContentCreator(valueList, header.id, nextOrder);
@@ -223,7 +221,7 @@ function newContentCreator(valueList,key,nextOrder){
   }
   removeChildNode(tableBody)
   removeChildNode(tableHeader)
-  tableLoader(headerObj,newContentObj,nextOrder)
+  tableLoader(headerObj,newContentObj,nextOrder,key)
 }
 
 // Remove table content
