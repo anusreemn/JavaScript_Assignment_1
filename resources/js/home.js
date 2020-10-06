@@ -242,7 +242,7 @@ const readLessBtn = document.querySelector('.read-less')
 
 function paraResize(){
   paraHeight = para.offsetHeight
-  if (paraHeight > 200) {
+  if (paraHeight > 197) {
     readLess();
   } else {
     para.style.height = 'auto'
@@ -253,13 +253,13 @@ function paraResize(){
 
 // Read less__
 readLessBtn.addEventListener('click',function(){
-  para.style.height = '200px'
+  para.style.height = '197px'
   readMoreBtn.style.display = 'block'
   readLessBtn.style.display = 'none'
 })
 
 function readLess(){
-  para.style.height = '200px'
+  para.style.height = '197px'
   readMoreBtn.style.display = 'block'
   readLessBtn.style.display = 'none'
 }
