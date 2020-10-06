@@ -28,16 +28,16 @@ function loadTable(headerObj){
   // Load table body
   utils.jsonCaller('get', 'resources/json/vacancies.json', function (object) {
     contentObj = object
-    tableLoader(headerObj,contentObj)
+    tableLoader(headerObj,contentObj,'asc')
   })
 }
 
 // Actual function to load table (Takes in two objects)
-function tableLoader(headerObj, contentObj) {
+function tableLoader(headerObj, contentObj,order) {
   
   const tableHeader = document.querySelector("#table-head")   
   const tableBody = document.querySelector("#table-body")
-  loadTableHead(tableHeader,headerObj);
+  loadTableHead(tableHeader,headerObj,order);
  
   for (let contentValue of contentObj) {
     
@@ -46,12 +46,17 @@ function tableLoader(headerObj, contentObj) {
       let columnElement = document.createElement("td");
       let key = headerValue.id;
       let cellValue = contentValue[key];
+
+      let icon = document.createElement('ion-icon')
+      icon.name = 'heart'
+
       if (headerValue.type == "link") {
         let link = document.createElement("a");
         link.href = cellValue;
         link.textContent = "Link";
         columnElement.appendChild(link);
-      } else if (headerValue.type == "button") {
+      } 
+      else if (headerValue.type == "button") {
         if (contentValue.status == "open") {
           let btn = document.createElement("button");
           btn.textContent = "Apply Now"
@@ -59,7 +64,8 @@ function tableLoader(headerObj, contentObj) {
             alert("Applies Successfully")
           }
           columnElement.appendChild(btn);
-        } else {
+        } 
+        else {
           columnElement.textContent = " - ";
         }
       }
@@ -67,10 +73,12 @@ function tableLoader(headerObj, contentObj) {
         columnElement.style.textAlign = "right";
         columnElement.textContent = cellValue;
         columnElement.className = key;
-      } else {
+      } 
+      else {
         columnElement.textContent = cellValue;
         columnElement.className = key;
       }
+
       rowElement.appendChild(columnElement);
     }
     tableBody.appendChild(rowElement);
@@ -79,15 +87,47 @@ function tableLoader(headerObj, contentObj) {
 
 
 // Load table headers
-function loadTableHead(tableHeader, headerObj) {
+function loadTableHead(tableHeader, headerObj,order) {
   let headRow = document.createElement("tr");
   for (let headValue of headerObj) {
     let headElement = document.createElement("th");
+
+    if(order == 'asc'){
+      headElement.className += 'asc'
+    }
+    else{
+      headElement.className += 'des'
+    }
+   
     headElement.textContent = headValue.tittle;
     headElement.setAttribute("data-type", headValue.type);
     headElement.setAttribute("data-sortable", headValue.sortable);
     headElement.id = headValue.id;
+    if(headValue.sortable == true){
+      let iconHolder = document.createElement("div"); // Creates a div to hold the icons
+      iconHolder.className = "icon-holder";
+      let upArrow = document.createElement("ion-icon");
+      upArrow.name = "chevron-up-outline";
+      upArrow.className = `${headValue.id}-up-arrow`; // Maps the icon and header column using class name
+      iconHolder.appendChild(upArrow);
+      let downArrow = document.createElement("ion-icon");
+      downArrow.name = "chevron-down-outline";
+      downArrow.className = `${headValue.id}-down-arrow`; // Maps the icon and header column using class name
+
+      if (order == 'asc'){
+        upArrow.style.visibility = 'visible'
+        downArrow.style.visibility = 'hidden'
+      }
+      else{
+        upArrow.style.visibility = "hidden";
+        downArrow.style.visibility = "visible";
+      }
+
+      iconHolder.appendChild(downArrow);
+      headElement.appendChild(iconHolder);
+    }
     headRow.appendChild(headElement);
+
   }
   tableHeader.appendChild(headRow);
 }
@@ -97,6 +137,7 @@ const tableHeader = document.querySelector("#table-head")
 tableHeader.addEventListener('click',function(e){
   
   let header = e.target
+  
   if (header.dataset["sortable"] == 'true' && header.dataset['type'] == 'number'){ 
     let element = document.querySelectorAll(`.${header.id}`)
     let valueList = []
@@ -104,8 +145,20 @@ tableHeader.addEventListener('click',function(e){
     for (let each of element){
       valueList.push(parseInt(each.textContent))
     }
-    valueList.sort((a, b) => a - b)
-    newContentCreator(valueList, header.id)
+
+    if(header.className == 'asc'){
+      console.log(header)
+      var nextOrder = 'des'
+      valueList.sort((a, b) => a - b);
+      newContentCreator(valueList, header.id, nextOrder);
+    }
+    else{
+      console.log("des");
+      var nextOrder = "asc";
+      valueList.reverse((a, b) => a - b);
+      newContentCreator(valueList, header.id, nextOrder);
+    }
+    
   }
   else if(header.dataset["sortable"] == 'true' && header.dataset['type'] == 'string'){
     let element = document.querySelectorAll(`.${header.id}`)
@@ -114,8 +167,18 @@ tableHeader.addEventListener('click',function(e){
     for(let each of element){
       valueList.push(each.textContent)
     }
-    valueList.sort()
-    newContentCreator(valueList, header.id)
+
+    if (header.className == "asc") {
+      console.log("asc");
+      var nextOrder = "des";
+      valueList.sort();
+      newContentCreator(valueList, header.id, nextOrder);
+    } else {
+      console.log("des");
+      var nextOrder = "asc";
+      valueList.reverse();
+      newContentCreator(valueList, header.id, nextOrder);
+    }
   }
   else if(header.dataset["sortable"] == 'true' && header.dataset['type'] == 'date'){
     let element = document.querySelectorAll(`.${header.id}`)
@@ -125,9 +188,20 @@ tableHeader.addEventListener('click',function(e){
       valueList.push(each.textContent)
     }
 
-    valueList.sort()
-    console.log(valueList)
-    newContentCreator(valueList, header.id);
+    if (header.className == "asc") {
+      console.log("asc");
+      var nextOrder = "des";
+      valueList.sort();
+      newContentCreator(valueList, header.id, nextOrder);
+    } else {
+      console.log("des");
+      var nextOrder = "asc";
+      valueList.reverse();
+      newContentCreator(valueList, header.id, nextOrder);
+    }
+
+    // valueList.sort()
+    // newContentCreator(valueList, header.id);
 
   }
   else{
@@ -135,7 +209,7 @@ tableHeader.addEventListener('click',function(e){
   }
 })
 
-function newContentCreator(valueList,key){
+function newContentCreator(valueList,key,nextOrder){
   let tableBody = document.querySelector('#table-body')
   let tableHeader = document.querySelector('#table-head')
   let newContentObj = []
@@ -149,7 +223,7 @@ function newContentCreator(valueList,key){
   }
   removeChildNode(tableBody)
   removeChildNode(tableHeader)
-  tableLoader(headerObj,newContentObj)
+  tableLoader(headerObj,newContentObj,nextOrder)
 }
 
 // Remove table content
