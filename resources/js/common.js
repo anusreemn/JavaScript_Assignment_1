@@ -1,13 +1,13 @@
 import utils from './utils.js'
 
 window.onload = (event) => {
-  
+
   var obj;
 
   menuLoader()
   welcomeText()
 
-  function welcomeText(){
+  function welcomeText() {
     var welcomeTextBox = document.querySelector('.welcome-text')
     var logoutBtn = document.querySelector('.logout')
 
@@ -18,7 +18,7 @@ window.onload = (event) => {
     })
   }
 
-  function menuLoader(){
+  function menuLoader() {
     const menuList = document.querySelector('#nav-menus')
     const header = document.querySelector('#page-heading')
 
@@ -71,11 +71,11 @@ window.onload = (event) => {
 
   // Blog post section
   let postLists = document.querySelector('.posts')
-  utils.jsonCaller('get','resources/json/blogpost.json', function(blogObj){
-     for(let blog of blogObj){
-       let blogPost = createPost(blog.tittle, blog.image)
-       postLists.appendChild(blogPost)
-     }
+  utils.jsonCaller('get', 'resources/json/blogpost.json', function (blogObj) {
+    for (let blog of blogObj) {
+      let blogPost = createPost(blog.tittle, blog.image)
+      postLists.appendChild(blogPost)
+    }
   })
 
 
@@ -106,13 +106,13 @@ window.onload = (event) => {
   const mainPara = document.querySelector("#blog-paragraph")
   let backupContent = mainPara.textContent;
   // const mainPara = document.querySelector(".content")
-  searchBar.addEventListener('keyup',function(){
+  searchBar.addEventListener('keyup', function () {
     let value = searchBar.value
     let content = mainPara.textContent
-    if(content.indexOf(value) != -1){
-      mainPara.innerHTML = content.replaceAll(value,`<span id="highlight">${value}</span>`)
+    if (content.indexOf(value) != -1) {
+      mainPara.innerHTML = content.replaceAll(value, `<span id="highlight">${value}</span>`)
     }
-    else{
+    else {
       mainPara.innerHTML = content
     }
   })
@@ -134,5 +134,5 @@ window.onload = (event) => {
   });
 }
 
-  
+
 

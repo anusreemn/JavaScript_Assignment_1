@@ -1,11 +1,11 @@
 
 /*------------------- Table Header loading fn -------------------*/
 
-let tableHeadLoader = function(headerList,order,callback){
-  if(headerList){  // Checks whether a table exists.
+let tableHeadLoader = function (headerList, order, callback) {
+  if (headerList) {  // Checks whether a table exists.
     let headRow = document.createElement("tr");
 
-    for (let headValue of headerList){
+    for (let headValue of headerList) {
       let headElement = document.createElement("th")
 
       // Check the table sorting direction and add class name accordingly.
@@ -14,7 +14,7 @@ let tableHeadLoader = function(headerList,order,callback){
       } else {
         headElement.className += "des"
       }
-  
+
       // Adding text content and data attribute to 'th' element
       headElement.textContent = headValue.tittle;
       headElement.setAttribute("data-type", headValue.type);
@@ -22,8 +22,8 @@ let tableHeadLoader = function(headerList,order,callback){
       headElement.id = headValue.id;
 
       // Adding up and down arrows
-      if(headValue.sortable == true){
-        
+      if (headValue.sortable == true) {
+
         let upArrow = document.createElement('i')
         upArrow.className = `${headValue.id}UpArrow up Arrow`;
 
@@ -45,14 +45,14 @@ let tableHeadLoader = function(headerList,order,callback){
 
 /*------------------- Table content loading fn -------------------*/
 
-let tableBodyLoader = function(tableBody,headerList,contentList){
-  if(contentList){  // Checks if any content present
+let tableBodyLoader = function (tableBody, headerList, contentList) {
+  if (contentList) {  // Checks if any content present
 
 
-    for(let contentValue of contentList){
+    for (let contentValue of contentList) {
       let rowElement = document.createElement("tr")
 
-      for (let headerValue of headerList){
+      for (let headerValue of headerList) {
         let columnElement = document.createElement("td");
         let key = headerValue.id;
         let cellValue = contentValue[key];
@@ -87,7 +87,7 @@ let tableBodyLoader = function(tableBody,headerList,contentList){
       tableBody.appendChild(rowElement);
     }
   }
-  else{
+  else {
     // Fallback fn here.......................................
   }
 }
@@ -95,7 +95,7 @@ let tableBodyLoader = function(tableBody,headerList,contentList){
 
 /*------------------- Table sorting fn ------------------------*/
 
-let tableSort = function(header,contentList,callback){
+let tableSort = function (header, contentList, callback) {
 
   // See if the data is sortable number
   if (
@@ -112,13 +112,13 @@ let tableSort = function(header,contentList,callback){
     if (header.className == "asc") {
       var nextOrder = "des";
       valueList.sort((a, b) => a - b);
-      var newContentList = newContentCreator(valueList,contentList, header.id, nextOrder);
+      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder);
       callback(newContentList, nextOrder);
-      
+
     } else {
       var nextOrder = "asc";
       valueList.reverse((a, b) => a - b);
-      var newContentList = newContentCreator(valueList,contentList, header.id, nextOrder);
+      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder);
       callback(newContentList, nextOrder);
     }
   }
@@ -137,12 +137,12 @@ let tableSort = function(header,contentList,callback){
     if (header.className == "asc") {
       var nextOrder = "des";
       valueList.sort();
-      var newContentList = newContentCreator(valueList,contentList, header.id, nextOrder);
+      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder);
       callback(newContentList, nextOrder);
     } else {
       var nextOrder = "asc";
       valueList.reverse();
-      var newContentList = newContentCreator(valueList,contentList, header.id, nextOrder);
+      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder);
       callback(newContentList, nextOrder);
     }
   }
@@ -161,15 +161,15 @@ let tableSort = function(header,contentList,callback){
     if (header.className == "asc") {
       var nextOrder = "des";
       valueList.sort();
-      var newContentList = newContentCreator(valueList,contentList, header.id, nextOrder);
+      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder);
       callback(newContentList, nextOrder);
     } else {
       let nextOrder = "asc";
       valueList.reverse();
-      var newContentList = newContentCreator(valueList,contentList, header.id, nextOrder);
+      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder);
       callback(newContentList, nextOrder);
     }
-   
+
   } else {
     console.log("Not sortable");
   }
@@ -181,7 +181,7 @@ let tableSort = function(header,contentList,callback){
 function newContentCreator(valueList, contentList, key, nextOrder) {
   let tableBody = document.querySelector("tbody");
   let tableHeader = document.querySelector("thead");
-  
+
   let newContentObj = [];
 
   for (let values of valueList) {
@@ -197,8 +197,8 @@ function newContentCreator(valueList, contentList, key, nextOrder) {
 }
 
 // Remove table content
-function removeChildNode(parent){
-  while(parent.firstChild){
+function removeChildNode(parent) {
+  while (parent.firstChild) {
     parent.removeChild(parent.firstChild)
   }
 }

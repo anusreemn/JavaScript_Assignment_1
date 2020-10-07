@@ -9,11 +9,11 @@ let headerObj, contentObj
 const para = document.querySelector('#blog-paragraph')
 const imageArea = document.querySelector('.image-area')
 
-utils.jsonCaller('get','resources/json/homepage.json',function(object){
+utils.jsonCaller('get', 'resources/json/homepage.json', function (object) {
   para.textContent = object.content
   // let headerObj = object.table
   headerObj = object.table;
-  
+
   const image = document.createElement('img')
   image.src = object.image
   image.className += 'content-img';
@@ -28,10 +28,10 @@ utils.jsonCaller('get','resources/json/homepage.json',function(object){
 /*--------------- Table loading section ---------------*/
 let tableHeader = document.querySelector("thead");
 let tableBody = document.querySelector('tbody')
-function loadTable(headerObj){
-  
-  if(headerObj){  // Checks whether a tale exist
-    
+function loadTable(headerObj) {
+
+  if (headerObj) {  // Checks whether a tale exist
+
 
     // Table header loading
     tableFn.tableHeadLoader(headerObj, "asc", function (headRow) {
@@ -41,7 +41,7 @@ function loadTable(headerObj){
     // Table content loading
     utils.jsonCaller("get", "resources/json/vacancies.json", function (object) {
       contentObj = object;
-      tableFn.tableBodyLoader(tableBody,headerObj,contentObj)
+      tableFn.tableBodyLoader(tableBody, headerObj, contentObj)
     });
 
   }
@@ -59,18 +59,18 @@ tableHeader.addEventListener("click", function (e) {
       // Hide icons based on sort order
       let upArrow = document.querySelector(`.${clickedId}UpArrow`)
       let downArrow = document.querySelector(`.${clickedId}DownArrow`);
-      if(nextOrder == 'asc'){
+      if (nextOrder == 'asc') {
         upArrow.style.visibility = 'hidden'
         downArrow.style.visibility = "visible";
       }
-      else{
+      else {
         upArrow.style.visibility = "visible";
         downArrow.style.visibility = "hidden";
       }
     });
 
     // Table body (re)loading
-    tableFn.tableBodyLoader(tableBody,headerObj, newContentList);
+    tableFn.tableBodyLoader(tableBody, headerObj, newContentList);
   });
 });
 
@@ -81,7 +81,7 @@ const readMoreBtn = document.querySelector('.read-more')
 const readLessBtn = document.querySelector('.read-less')
 
 
-function paraResize(){
+function paraResize() {
   paraHeight = para.offsetHeight
   if (paraHeight > 197) {
     readLess();
@@ -93,13 +93,13 @@ function paraResize(){
 }
 
 // Read less__
-readLessBtn.addEventListener('click',function(){
+readLessBtn.addEventListener('click', function () {
   para.style.height = '197px'
   readMoreBtn.style.display = 'block'
   readLessBtn.style.display = 'none'
 })
 
-function readLess(){
+function readLess() {
   para.style.height = '197px'
   readMoreBtn.style.display = 'block'
   readLessBtn.style.display = 'none'
@@ -107,14 +107,14 @@ function readLess(){
 
 
 // Read more__
-readMoreBtn.addEventListener('click',function(){
+readMoreBtn.addEventListener('click', function () {
   para.style.height = 'auto'
   readMoreBtn.style.display = 'none'
   readLessBtn.style.display = 'block'
 })
 
 
-  
+
 
 
 

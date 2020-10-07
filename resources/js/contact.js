@@ -5,30 +5,30 @@ const form = document.querySelector('form')
 
 var isValid = true
 
-submitBtn.addEventListener('click', function(){
+submitBtn.addEventListener('click', function () {
   validateFields(fields)
-  
+
   if (isValid) {
-  
+
     var contactData = {
       name: fields[0].value,
       email: fields[3].value,
       phone: fields[2].value,
       message: fields[4].value,
     };
-    
+
     const contactJSON = JSON.stringify(contactData);
     // clearError()
     apiCall(contactJSON);
   } else {
     isValid = true;
   }
-  
+
 })
 
-function validateFields(fields){
-  
-  for(i=0; i<fields.length;i++){
+function validateFields(fields) {
+
+  for (i = 0; i < fields.length; i++) {
     var input = fields[i]
     validate(input)
   }
@@ -45,49 +45,49 @@ function validate(input) {
     if (input.id == 'name') {
       validName = validateName(input)
     }
-    else if(input.id == 'phone'){
+    else if (input.id == 'phone') {
       validPhone = validatePhone(input)
     }
-    else if(input.id == 'email'){
+    else if (input.id == 'email') {
       validEmail = validateEmail(input)
     }
-    else if(input.id == 'message'){
+    else if (input.id == 'message') {
       validMessage = validateMessage(input)
     }
   }
 
 }
 
-function validateName(input){
-  if(input.value.length < 8){
+function validateName(input) {
+  if (input.value.length < 8) {
     setError(input, 'Name is too short!');
     return false
-  }else{
-    if(!isName(input.value)){
+  } else {
+    if (!isName(input.value)) {
       setError(input, 'Name is invalid!');
       return false
     }
-    else{
+    else {
       clearError(input)
       return true
     }
   }
 }
 
-function validatePhone(input){
-  
-  if(isNaN(input.value) || input.value.length != 10){
+function validatePhone(input) {
+
+  if (isNaN(input.value) || input.value.length != 10) {
     setError(input, 'Phone number is invalid!');
     return false;
-  }else{
+  } else {
     clearError(input)
     return true
   }
 }
 
-function validateEmail(input){
+function validateEmail(input) {
   if (!isEmail(input.value)) {
-    setError(input,'Email is invalid!');
+    setError(input, 'Email is invalid!');
     return false
   } else {
     clearError(input);
@@ -95,7 +95,7 @@ function validateEmail(input){
   }
 }
 
-function validateMessage(input){
+function validateMessage(input) {
   if (input.value.length < 6) {
     setError(input, 'Message is too short!');
     return false
@@ -105,7 +105,7 @@ function validateMessage(input){
   }
 }
 
-function countChar(input){
+function countChar(input) {
   const counter = document.querySelector(`#${input.id}-counter`);
   const limit = input.maxLength;
 
@@ -116,25 +116,25 @@ function countChar(input){
 }
 
 
-for(i=0;i< fields.length; i++){
-  fields[i].addEventListener('blur',function(e){
+for (i = 0; i < fields.length; i++) {
+  fields[i].addEventListener('blur', function (e) {
     validate(e.target)
   })
 }
 
-form.addEventListener('keydown',function(e){
-  try{
+form.addEventListener('keydown', function (e) {
+  try {
     const field = e.target
     clearError(e.target);
     countChar(field)
   }
-  catch{
+  catch {
     return
   }
 })
 
 
-function setError(input,msg){
+function setError(input, msg) {
   const fieldError = document.querySelector(`#${input.id}-error`);
   const field = document.querySelector(`#${input.id}`)
   field.style.border = '1px solid #ff0033';
@@ -144,28 +144,28 @@ function setError(input,msg){
 }
 
 
-function clearError(input){
+function clearError(input) {
   const fieldError = document.querySelector(`#${input.id}-error`);
   const field = document.querySelector(`#${input.id}`);
 
   field.style.border = '1px solid #2ecc71';
   fieldError.style.display = 'none';
-  
+
 }
 
 
-function apiCall(jsonData){
+function apiCall(jsonData) {
   // alert(jsonData)
   console.log(jsonData)
 }
 
 // Email validation using regular expressions
-function isEmail(email){
+function isEmail(email) {
   return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
 }
 
 // Name validation using regular expressions (returns true or false)
-function isName(name){
+function isName(name) {
   return /^[A-Za-z\s]+$/.test(name)
 }
 

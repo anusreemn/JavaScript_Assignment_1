@@ -1,29 +1,28 @@
 {
-  "table":[
-  {
-    "tittle":"Office",
-    "sortable":true,
-    "type":"string",
-    "id":"office"
-  },
-  {
-    "tittle":"Address",
-    "sortable":false,
-    "type":"string",
-    "id":"address"
-  },
-  {
-    "tittle":"Contact",
-    "sortable":false,
-    "type":"number",
-    "id":"contact"
-  },
-  {
-    "tittle":"Location",
-    "sortable":false,
-    "type":"link",
-    "id":"location"
-  }
-
-]
+  "table": [
+    {
+      "tittle": "Office",
+      "sortable": true,
+      "type": "string",
+      "id": "office"
+    },
+    {
+      "tittle": "Address",
+      "sortable": false,
+      "type": "string",
+      "id": "address"
+    },
+    {
+      "tittle": "Contact",
+      "sortable": false,
+      "type": "number",
+      "id": "contact"
+    },
+    {
+      "tittle": "Location",
+      "sortable": false,
+      "type": "link",
+      "id": "location"
+    }
+  ]
 }

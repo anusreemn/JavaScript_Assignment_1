@@ -1,8 +1,8 @@
 
-if(supports_local_storage()){
+if (supports_local_storage()) {
   location.href = "/login.html"
 }
-else{
+else {
   popup()
 }
 
@@ -16,7 +16,7 @@ function supports_local_storage() {
 }
 
 // Make the popup
-function popup(){
+function popup() {
   let popupCard = document.querySelector(".index-popup");
   popupCard.classList.toggle('active')
 }

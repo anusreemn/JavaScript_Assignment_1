@@ -17,13 +17,13 @@ let isValid = true
 
 
 // Click event of register button
-registerBtn.addEventListener('click',function(){
-  isValid = true 
+registerBtn.addEventListener('click', function () {
+  isValid = true
   validateFields(forValidation)
-  
+
   if (isValid) {
     let confirmField = document.querySelector(`#${passwordInput.id}-confirm`);
-    if (confirmPassword(passwordInput)){
+    if (confirmPassword(passwordInput)) {
       if (terms.checked) {
         clearError(confirmField);
         let user = {
@@ -31,20 +31,20 @@ registerBtn.addEventListener('click',function(){
           lastname: lastnameInput.value,
           dob: dateofbirthInput.value,
           gender: dropdown.value,
-          password:passwordInput.value
+          password: passwordInput.value
         }
 
-        utils.storeObjects('users',user)
+        utils.storeObjects('users', user)
         popup()
       } else {
         termsError.style.display = "block"
       }
     }
-    else{
+    else {
       setError(confirmField, 'Passwords does not match.');
       isValid = true;
     }
-    
+
   } else {
     console.log('Not Valid');
     isValid = true;
@@ -54,29 +54,29 @@ registerBtn.addEventListener('click',function(){
 
 
 // General validation of required fields
-function validateFields(fields){
+function validateFields(fields) {
 
-  for(let field of fields){
+  for (let field of fields) {
     validate(field)
   }
 }
 
-function validate(field){
+function validate(field) {
 
-  if(field.required && field.value.length == 0){
+  if (field.required && field.value.length == 0) {
     setError(field, `${field.name} cannot be blank.`);
   }
-  else{
+  else {
     if (field.name == 'First name' || field.name == 'Last name') {
       validateName(field);
-    } 
+    }
     else if (field.name == 'Password') {
       validatePassword(field)
     }
-    else if(field.name == 'password-confirm'){
+    else if (field.name == 'password-confirm') {
       confirmPassword(field)
     }
-    else if(field.name == 'Date of birth'){
+    else if (field.name == 'Date of birth') {
       validateDate(field)
     }
   }
@@ -99,20 +99,20 @@ function validateName(input) {
 }
 
 // Validate password
-function validatePassword(input){
-  if(input.value.length < input.minLength){
+function validatePassword(input) {
+  if (input.value.length < input.minLength) {
     setError(input, `${input.name} is too short.`)
     return false
   }
-  else{
-    if(!isPass(input.value)){
+  else {
+    if (!isPass(input.value)) {
       setError(
         input,
         'password should contain at least one number and one special character'
       );
       return false;
     }
-    else{
+    else {
       clearError(input);
       return true;
     }
@@ -120,40 +120,40 @@ function validatePassword(input){
 }
 
 // Confirm password
-function confirmPassword(input){
+function confirmPassword(input) {
   let secondPass = document.querySelector(`#${input.id}-confirm`);
-  if (input.value == secondPass.value){
+  if (input.value == secondPass.value) {
     return true
   }
-  else{
+  else {
     return false
   }
 }
 
 // Dob validation
-function validateDate(input){
+function validateDate(input) {
   let d = new Date();
   // console.log(d.getFullYear());
   // console.log(d.getMonth() + 1);
   // console.log(d.getDate());
-  
+
   let dateInput = input.value.split("-")
   let userYear = parseInt(dateInput[0])
   let userMonth = parseInt(dateInput[1])
   let userDay = parseInt(dateInput[2])
 
-  if(userYear > d.getFullYear()){
+  if (userYear > d.getFullYear()) {
     setError(input, "You are not born yet!")
   }
-  else if(userYear == d.getFullYear()){
+  else if (userYear == d.getFullYear()) {
     if (userMonth > d.getMonth() + 1 || userMonth > `0${d.getMonth() + 1}`) {
       setError(input, "You are not born yet!");
-    } 
-    else if(userMonth == d.getMonth() + 1 || userMonth == `0${d.getMonth() + 1}`){
+    }
+    else if (userMonth == d.getMonth() + 1 || userMonth == `0${d.getMonth() + 1}`) {
       if (userDay >= d.getDate() || userDay >= `0${d.getDate()}`) {
         setError(input, "You are not born yet!");
       }
-      else{
+      else {
         clearError(input)
       }
     }
@@ -161,7 +161,7 @@ function validateDate(input){
       clearError(input)
     }
   }
-  else{
+  else {
     clearError(input)
   }
 
@@ -173,24 +173,24 @@ function validateDate(input){
   // else{
   //   setError(input,'You are not born yet!')
   // }
-  
-  
+
+
   // console.log(`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`);
-  
+
 }
 
 
 
 // Name validation using regular expressions
-function isName(name){
+function isName(name) {
   return /^[A-Za-z\s]+$/.test(name)
 }
 
-function isPass(password){
+function isPass(password) {
   return /^[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password);
   // Reffer: https://stackoverflow.com/questions/12090077/javascript-regular-expression-password-validation-having-special-characters
 }
-dateofbirthInput.addEventListener('focus',function(){
+dateofbirthInput.addEventListener('focus', function () {
   this.type = 'date'
 })
 
@@ -199,7 +199,7 @@ dateofbirthInput.addEventListener("blur", function () {
 });
 
 // Setting the error
-function setError(input,msg){
+function setError(input, msg) {
   const errorField = document.querySelector(`.${input.id}-error`)
   input.style.border = '1px solid #ff0033'
   errorField.textContent = msg
@@ -207,7 +207,7 @@ function setError(input,msg){
 }
 
 // Clearing errors
-function clearError(input){
+function clearError(input) {
   const fieldError = document.querySelector(`.${input.id}-error`)
   input.style.border = '1px solid #2ecc71'
   fieldError.textContent = ''
@@ -215,7 +215,7 @@ function clearError(input){
 
 
 // Validate on blur
-for(let each of forValidation){
+for (let each of forValidation) {
   each.addEventListener('blur', function (e) {
     validate(e.target);
   });
@@ -223,26 +223,26 @@ for(let each of forValidation){
 
 // Clear error on keydown
 const form = document.querySelector('form')
-form.addEventListener('keydown',function(e){
+form.addEventListener('keydown', function (e) {
   clearError(e.target)
 })
 
 // Creates a user and stores to localStorage
-function createUser(firstname,lastname,dob,gender,password){
+function createUser(firstname, lastname, dob, gender, password) {
   let userObj = {
-    firstname:firstname,
-    lastname:lastname,
-    dob:dob,
-    gender:gender,
-    password:password
+    firstname: firstname,
+    lastname: lastname,
+    dob: dob,
+    gender: gender,
+    password: password
   }
-  
+
   console.log(userObj);
-  utils.storeObjects('users',userObj)
+  utils.storeObjects('users', userObj)
 }
 
 // Make the popup
-function popup(){
+function popup() {
   let body = document.querySelector('.register-body')
   let popupCard = document.querySelector('.popup')
 
@@ -255,18 +255,18 @@ function disableScroll() {
   // Get the current page scroll position
   let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   let scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
-    // if any scroll is attempted, set this to the previous value
+  // if any scroll is attempted, set this to the previous value
   window.onscroll = function () {
     window.scrollTo(scrollLeft, scrollTop);
   }
-} 
+}
 
-termsError.addEventListener('change',function(e){
-  if(termsError.checked){
+termsError.addEventListener('change', function (e) {
+  if (termsError.checked) {
     termsError.style.display = "none"
     console.log("check")
   }
-  else{
+  else {
     termsError.style.display = "block"
     console.log("not check")
   }

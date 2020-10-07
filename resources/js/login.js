@@ -3,7 +3,7 @@ import utils from './utils.js'
 let userValue = localStorage.getItem('users')
 let loggedinUser = localStorage.getItem('loggedin')
 
-if(loggedinUser === null){
+if (loggedinUser === null) {
 
   if (userValue === null) {
     let value = '[]';
@@ -15,24 +15,24 @@ if(loggedinUser === null){
   }
 
 }
-else{
+else {
   location.href = '/home.html'
 }
 
-function loginAction(){
+function loginAction() {
   let fields = document.querySelectorAll('input');
   let loginBtn = document.querySelector('#login-button');
 
   loginBtn.addEventListener('click', function () {
     utils.retrieveObjects('users', function (data) {
       let dataString = JSON.stringify(data)
-      
-      if (dataString == '[]') { 
+
+      if (dataString == '[]') {
         setError('No user exist')
       }
-      else{
+      else {
         for (let user of data) {
-          if(fields[0].value == user.firstname && fields[1].value == user.password){
+          if (fields[0].value == user.firstname && fields[1].value == user.password) {
             clearError(fields[1]);
             let nameOfUser = `${user.firstname} ${user.lastname}`;
             localStorage.setItem('loggedin', nameOfUser)
@@ -64,8 +64,8 @@ function clearError() {
 }
 
 let inputs = document.querySelectorAll('input')
-for (let each of inputs){
-  each.addEventListener('focus',function(){
+for (let each of inputs) {
+  each.addEventListener('focus', function () {
     clearError()
   })
 }
