@@ -20,10 +20,21 @@ body{
 
 .flex-box{display: flex;}
 
-.row{
-  padding: 0 !important;
-  margin: 0 !important;
+
+.styled-btn-white{
+ background-color: #95e1f9;
+ border: 1px solid #000;
+ transition: all 0.2s;
+ cursor: pointer;
+ color: #000;
 }
+
+.styled-btn-white:hover{
+  background-color: #fff;
+ border: 1px solid #fff;
+}
+
+
 
 /*-------------------------*/
 /*------ HEADER -----------*/
@@ -60,9 +71,24 @@ header h1{
   height: 40px;
   border-radius: 20px;
   border: 3px solid #66c5e4;
-  padding: 0 1%;
+  padding: 0 5%;
   margin-top: 10px;
   box-shadow: 3px 3px rgba(0,0,0,0.4);
+}
+
+.user-text-box{
+  /* background-color: #018dad; */
+  justify-content: space-between;
+  padding: 0 10px;
+  margin-top: 10px;
+}
+
+.welcome-text{
+ margin: auto 0;
+}
+
+.logout{
+  padding: 5px 8px;
 }
 
 
@@ -306,3 +332,16 @@ textarea{
   margin: 30px auto;
   opacity: 0.5;
 }
+
+
+/*-------------------------*/
+/*------ Login Page -------*/
+/*-------------------------*/
+
+.login-body{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #018dad;
+}
+

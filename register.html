@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="resources/css/register.css">
+  <title>RMedia SignUp</title>
+</head>
+<body>
+  <section class="register-body">
+
+    <div class="register-card">
+      <div class="login-head register-card-head flex-box">
+        <h1 class="login-head-text">Register</h1>
+        <img src="resources/images/logo.jpg" alt="RMedia Logo" class="login-logo">
+      </div>
+      <hr>
+      <form class="register-form flex-box">
+
+        <div class="display-box flex-box">
+          <div class="firstname-group flex-box">
+            <label for="First name">First Name</label>
+            <input type="text" name="First name" id="firstname" class="validate" minlength="6" required>
+            <p class="firstname-error error"></p>
+          </div>
+          
+          <div class="lastname-group flex-box">
+            <label for="Last name">Last Name</label>
+            <input type="text" name="Last name" id="lastname" minlength="2" class="validate" required>
+            <p class="lastname-error error"></p>
+          </div>
+        </div>
+
+        <div class="display-box flex-box">
+          <div class="dob-group flex-box">
+            <label for="dob">Date Of Birth</label>
+            <input type="date" name="dob" id="dob" required> 
+            <!-- <p class="dob-error error">0</p> -->
+          </div>
+          
+          <div class="gender-group flex-box">
+            <label for="gender">Gender</label>
+            <!-- <input type="text" name="gender" id="gender"> -->
+            <select name="genger" id="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+            <!-- <p class="gender-error error">0</p> -->
+          </div>
+        </div>
+
+        <div class="display-box flex-box">
+          <div class="password-group flex-box">
+            <label for="Password">Password</label>
+            <input type="password" name="Password" id="password" class="validate" minlength="5" required>
+            <p class="password-error error"></p>
+          </div>
+          
+          <div class="password-confirm-group flex-box">
+            <label for="password-confirm">Confirm Password</label>
+            <input type="password" name="password-confirm" id="password-confirm" required>
+            <p class="password-confirm-error error"></p>
+          </div>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" name="t-and-c" id="termsAndConditions" >  Accept Terms and Conditions
+          <p class="error" id="termsError">Please accept our terms and conditions to continue</p>
+        </div>
+        
+        <button type="button" id="register-button" class="styled-btn">Sign Up</button>
+        <a href="login.html">Already Registered? Log In</a>
+      </form>
+    </div>
+
+  </section>
+  <section class="popup flex-box">
+    <h2 class="popup-heading">Registered Succesfully</h2>
+    <img src="resources/images/tick.png" alt="tick mark" class="popup-image">
+    <a href="login.html" class="btn">Go to login</a>
+  </section>
+  <script type="module" src="resources/js/utils.js"></script>
+  <script type="module" src="resources/js/register.js"></script>
+</body>
+</html>

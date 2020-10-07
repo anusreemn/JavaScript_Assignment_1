@@ -23,7 +23,13 @@
   <header>
     <div class="container flex-box head-box">
       <h1><a href="#"><img src="resources/images/logo.jpg" alt="Rmedia"></a></h1>
-      <input type="search" name="search" id="search" placeholder="search...">
+      <div class="search-and-text">
+        <input type="search" name="search" id="search" placeholder="search...">
+        <div class="user-text-box flex-box">
+          <p class="welcome-text"></p>
+          <button class="logout styled-btn-white">Logout</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -37,7 +43,7 @@
             <button class="drop-down-button">Menu</button>
           </div>
           <nav class="navigation">
-            <ul id="nav-menues">
+            <ul id="nav-menus">
               
             </ul>
           </nav>
@@ -74,7 +80,8 @@
       </ul>
     </div>
   </footer>
-  <script src="resources/js/common.js"></script>
+  <script type="module" src="resources/js/utils.js"></script>
+  <script type="module" src="resources/js/common.js"></script>
 </body>
 </html>
 

@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="resources/css/responsive.css">
   <title>Rmedia</title>
 
-  <!-- Favicons -->
+  <!-- Favicons for apple, windows, android, and web browsors -->
   <link rel="apple-touch-icon" sizes="180x180" href="/resources/favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicons/favicon-16x16.png">
@@ -30,6 +30,7 @@
           <button class="logout styled-btn-white">Logout</button>
         </div>
       </div>
+      
     </div>
   </header>
 
@@ -44,7 +45,7 @@
           </div>
           <nav class="navigation">
             <ul id="nav-menus">
-             
+            
             </ul>
           </nav>
         </section>
@@ -52,17 +53,14 @@
           <div class="top-section flex-box">
             <div class="content-area">
               <h2 id="page-heading"></h2>
-              <p> Lorem lpsum is simply dummy text of the printing and typesetting industry.
-              Lorem lpsum has been the industry's standard dummy text ever since the 1500's,when an
-              unknown printer took a galley of type and scrambled it to make a type specimen book.It has
-              survived not only five centuries, but also the leap into electronic typesetting,remaining
-              1960s with the release ofLetraset sheets containing lorem lpsum passages,and more recently with desktop publishing
-              software
-              like Aldus Pagemker including versions of lorem lpsum.</p>
-              <p>why do use it?</p>
+              <p id="blog-paragraph"> 
+              
+              </p>
+              <button class="read-more" onclick="readMore()">Read More</button>
+              <button class="read-less" onclick="readLess()">Read Less</button>
             </div>
             <div class="image-area">
-              <img src="resources/images/main-image.jpg" alt="Rmedia image" class="content-img">
+              
             </div>
           </div>
           <div class="bottom-section">
@@ -123,7 +121,7 @@
         <section class="right-section">
           <h3 class="post-heading">Latest Post</h3>
           <ul class="posts">  
-           
+            
           </ul>
         </section>
       </div>
@@ -146,9 +144,11 @@
       </ul>
     </div>
   </footer>
+
   <script type="module" src="resources/js/utils.js"></script>
+  <script type="module" src="resources/js/home.js"></script>
   <script type="module" src="resources/js/common.js"></script>
+  
 </body>
 </html>
-
 

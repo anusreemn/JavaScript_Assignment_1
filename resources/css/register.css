@@ -1,0 +1,229 @@
+/*-------------------------*/
+/*------ GENERAL-----------*/
+/*-------------------------*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container{
+  max-width: 1084px;
+  margin: 0 auto;
+}
+
+.flex-box{display: flex;}
+
+.styled-btn{
+ background-color: #95e2f9;
+ border: 1px solid #95e2f9;
+ transition: all 0.2s;
+ cursor: pointer;
+}
+
+.styled-btn:hover{
+  background-color: #66c5e4;
+  border: 1px solid #95e2f9;
+}
+
+
+/*-------------------------*/
+/*------ Login Page -------*/
+/*-------------------------*/
+
+.login-body{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color:#fff;
+}
+
+.login-card{
+  background-color:#fff;
+  margin: 100px auto;
+  width: 30%;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+  height: auto;
+}
+
+.login-head{
+  background-color:#95e2f9;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.login-logo{ height: 30px;}
+.login-head-text{
+  margin: auto 0;
+}
+
+.login-form{
+  padding: 20px;
+  flex-direction: column;
+}
+
+.login-form input{
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.username-group,
+.password-group,
+.firstname-group,
+.lastname-group,
+.dob-group,
+.gender-group,
+.password-group,
+.password-confirm-group{
+  margin-top: 10px;
+  flex-direction: column;
+}
+
+.username-error,
+.password-error{ color: #ff0033;}
+
+#login-button{
+  width: 25%;
+  margin: 10px auto;
+  padding: 8px 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+/*-------------------------*/
+/*------ Register Page ----*/
+/*-------------------------*/
+.register-card-head{ padding: 10px 40px;}
+
+.register-body{ 
+  height: auto;
+  position: relative;
+  width: 100vw;
+  background-color:#fff;
+}
+
+.register-form{
+  flex-direction: column;
+  padding: 30px;
+  margin: 0 auto;
+}
+
+.register-card{ 
+  margin-top: 30px;
+  background-color:#fff;
+  margin: 100px auto;
+  width: 40%;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+  height: auto;
+}
+
+.register-form input{
+  padding: 8px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+select{
+  padding: 8px;
+  margin: 10px 0;
+  width: 100%;
+  border-radius: 5px;
+}
+form p{text-align: right;}
+
+.display-box{
+  flex-direction: row;
+  margin: 0 10px;
+  justify-content: space-between;
+}
+
+.display-box div{
+  width: 47%;
+}
+
+#register-button{
+  width: 25%;
+  margin: 30px auto;
+  padding: 8px 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.checkbox-group{
+  margin: 0 auto;
+  text-align: center;
+}
+.checkbox-group input{
+  margin-top: 15px;
+}
+
+.checkbox-group p{display: none;}
+
+a{
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+/* Errors */
+.error{
+  color: #ff0033;
+}
+
+
+/*-------------------------*/
+/*------ Pop up -----------*/
+/*-------------------------*/
+.blur{
+  filter: blur(20px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.active{
+  visibility: visible !important;
+  transition: 0.5s;
+}
+
+.popup{
+  flex-direction: column;
+  justify-content: space-around;
+  position: fixed;
+  padding: 30px;
+  top: 40%;
+  visibility: hidden;
+  left: 50%;
+  width: 500px;
+  transform: translate(-50%,-50%);
+  background-color: #fff;
+}
+
+.popup-heading{
+  text-align: center;
+}
+
+.popup-image{
+  margin: 10px auto;
+  width: 100px;
+  height: auto;
+}
+
+.btn{
+  text-decoration: none;
+  color: #000;
+  background-color: #66c5e4;
+  padding: 10px 12px;
+  margin: 10px 0;
+}
+
+
+
+
