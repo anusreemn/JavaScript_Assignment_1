@@ -181,15 +181,16 @@ function validateDate(input) {
 
 
 
-// Name validation using regular expressions
+// Name validation using regular expressions (Checks whether it contains only alphabets)
 function isName(name) {
   return /^[A-Za-z\s]+$/.test(name)
 }
 
 function isPass(password) {
   return /^[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password) 
-  // Reffer: https://stackoverflow.com/questions/12090077/javascript-regular-expression-password-validation-having-special-characters
+  // Supposed to see if the password contains numbers, strings, and spl. chars
 }
+
 dateofbirthInput.addEventListener('focus', function () {
   this.type = 'date'
 })

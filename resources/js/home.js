@@ -1,7 +1,7 @@
 import utils from './utils.js' 
 import tableFn from "./table.js" 
 
-var paraHeight
+let paraHeight
 let headerObj, contentObj
 
 

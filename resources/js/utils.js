@@ -34,11 +34,6 @@ let retreiveObjects = function (key, callback) {
   callback(storedValue)
 }
 
-let testcall = function (callback) {
-  let msg = 'testcall accesed'
-  callback(msg)
-}
-
-let utils = { jsonCaller, testcall, storeObjects, retrieveObjects: retreiveObjects }
+let utils = { jsonCaller, storeObjects, retrieveObjects: retreiveObjects }
 export default utils
 

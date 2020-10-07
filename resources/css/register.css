@@ -74,14 +74,8 @@ body{
   border-radius: 5px;
 }
 
-.username-group,
-.password-group,
-.firstname-group,
-.lastname-group,
-.dob-group,
-.gender-group,
-.password-group,
-.password-confirm-group{
+
+.group{
   margin-top: 10px;
   flex-direction: column;
 }
