@@ -1,8 +1,10 @@
-
+let tableHeaders = [];
+let tableContent = [];
 /*------------------- Table Header loading fn -------------------*/
 
 let tableHeadLoader = function (headerList, order, callback) {
   if (headerList) {  // Checks whether a table exists.
+    tableHeaders = headerList;
     let headRow = document.createElement("tr") 
 
     for (let headValue of headerList) {
@@ -10,9 +12,9 @@ let tableHeadLoader = function (headerList, order, callback) {
 
       // Check the table sorting direction and add class name accordingly.
       if (order == "asc") {
-        headElement.className += "asc"
-      } else {
-        headElement.className += "des"
+        headElement.className = "asc"
+      } else if (order == "desc") {
+        headElement.className = "desc"
       }
 
       // Adding text content and data attribute to 'th' element
@@ -25,10 +27,10 @@ let tableHeadLoader = function (headerList, order, callback) {
       if (headValue.sortable == true) {
 
         let upArrow = document.createElement('i')
-        upArrow.className = `${headValue.id}UpArrow up Arrow` 
+        upArrow.className = `up Arrow` 
 
         let downArrow = document.createElement('i')
-        downArrow.className = `${headValue.id}DownArrow down Arrow` 
+        downArrow.className = `down Arrow` 
 
         headElement.appendChild(upArrow)
         headElement.appendChild(downArrow) 
@@ -37,17 +39,64 @@ let tableHeadLoader = function (headerList, order, callback) {
       headRow.appendChild(headElement) 
     }
 
-    callback(headRow) 
+    //insert headRow into thead
+    const thead = document.querySelector('thead');
+    thead.appendChild(headRow); 
+
+    bindSortToThead(thead);
 
   }
 }
 
-
 /*------------------- Table content loading fn -------------------*/
 
-let tableBodyLoader = function (tableBody, headerList, contentList) {
+let bindSortToThead = function (tableHeader) {
+
+  // Event listener for sorting
+  tableHeader.addEventListener("click", function (e) {
+    let header = e.target 
+    let clickedId = header.id
+    
+    tableSort(header, function (newContentList) {
+      // determine current clicked header sort classname
+      let nextOrder = "asc";
+      if (header.className == "asc") {
+        nextOrder = "desc" 
+      }
+      // reset all header sort classnames
+      resetSortClassNames();
+      header.className = nextOrder;
+
+      // Table body (re)loading
+      redraw(newContentList) 
+    }) 
+  }) 
+
+}
+
+
+/*------------------- Table content loading fn -------------------*/
+let insertEmptyTableRow = function() {
+  const body = document.querySelector('tbody');
+  const row = body.insertRow();
+  const td = row.insertCell();
+  td.setAttribute('colspan', tableHeaders.length);
+  td.setAttribute('class', 'empty-row');
+  td.innerHTML = 'No Data Available.';
+}
+
+let redraw = function(content) {
+  document.querySelector('tbody').remove();
+  document.querySelector('table').appendChild(document.createElement('tbody'));
+  tableBodyLoader(content)
+}
+
+let tableBodyLoader = function (contentList) {
+  let headerList = tableHeaders;
   if (contentList) {  // Checks if any content present
 
+    tableContent = contentList;
+    const tableBody = document.querySelector('tbody')
 
     for (let contentValue of contentList) {
       let rowElement = document.createElement("tr")
@@ -89,121 +138,49 @@ let tableBodyLoader = function (tableBody, headerList, contentList) {
   }
   else {
     // Fallback fn here.......................................
+    insertEmptyTableRow()
   }
 }
+
 
 
 /*------------------- Table sorting fn ------------------------*/
+let sortData = function(data, sortKey) {
+  const newData = data.sort(function(a, b) {
+    return a[sortKey] - b[sortKey]
+  })
+  return newData;
+}
 
-let tableSort = function (header, contentList, callback) {
+let reverseData = function(data, sortKey) {
+  const newData = data.reverse(function(a, b) {
+    return a[sortKey] - b[sortKey]
+  })
+  return newData;
+}
 
-  // See if the data is sortable number
-  if (
-    header.dataset["sortable"] == "true" &&
-    header.dataset["type"] == "number"
-  ) {
-    let element = document.querySelectorAll(`.${header.id}`) 
-    let valueList = [] 
-
-    for (let each of element) {
-      valueList.push(parseInt(each.textContent)) 
-    }
-
-    if (header.className == "asc") {
-      var nextOrder = "des" 
-      valueList.sort((a, b) => a - b) 
-      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder) 
-      callback(newContentList, nextOrder) 
-
+let tableSort = function(header, callback) {
+  if (header.dataset.sortable) {
+    // See if the data is sortable and do below
+    let newContentList = [];
+    if (header.className == 'asc') {
+      newContentList = sortData(tableContent, header.id);
     } else {
-      var nextOrder = "asc" 
-      valueList.reverse((a, b) => a - b) 
-      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder) 
-      callback(newContentList, nextOrder) 
+      newContentList = reverseData(tableContent, header.id);
     }
-  }
-  // See if the data is sortable strings
-  else if (
-    header.dataset["sortable"] == "true" &&
-    header.dataset["type"] == "string"
-  ) {
-    let element = document.querySelectorAll(`.${header.id}`) 
-    let valueList = [] 
-
-    for (let each of element) {
-      valueList.push(each.textContent) 
-    }
-
-    if (header.className == "asc") {
-      var nextOrder = "des" 
-      valueList.sort() 
-      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder) 
-      callback(newContentList, nextOrder) 
-    } else {
-      var nextOrder = "asc" 
-      valueList.reverse() 
-      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder) 
-      callback(newContentList, nextOrder) 
-    }
-  }
-  // See if the data is sortable date (string type)
-  else if (
-    header.dataset["sortable"] == "true" &&
-    header.dataset["type"] == "date"
-  ) {
-    let element = document.querySelectorAll(`.${header.id}`) 
-    let valueList = [] 
-
-    for (let each of element) {
-      valueList.push(each.textContent) 
-    }
-
-    if (header.className == "asc") {
-      var nextOrder = "des" 
-      valueList.sort() 
-      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder) 
-      callback(newContentList, nextOrder) 
-    } else {
-      let nextOrder = "asc" 
-      valueList.reverse() 
-      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder) 
-      callback(newContentList, nextOrder) 
-    }
-
+    callback(newContentList);
   } else {
     console.log("Not sortable") 
+    return 
   }
 }
 
-
-
-// New table according to sort
-function newContentCreator(valueList, contentList, key, nextOrder) {
-  let tableBody = document.querySelector("tbody") 
-  let tableHeader = document.querySelector("thead") 
-
-  let newContentObj = [] 
-
-  for (let values of valueList) {
-    for (let content of contentList) {
-      if (values == content[key]) {
-        newContentObj.push(content) 
-      }
-    }
-  }
-  removeChildNode(tableBody) 
-  removeChildNode(tableHeader) 
-  return newContentObj 
-}
-
-// Remove table content
-function removeChildNode(parent) {
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild)
+let resetSortClassNames = function() {
+  const thElms = document.querySelectorAll('th')
+  for (let th of thElms) {
+    th.className = '';
   }
 }
-
-
 
 let tableFn = { tableHeadLoader, tableBodyLoader, tableSort } 
 export default tableFn

@@ -1,18 +1,17 @@
-let jsonCaller = function (meathod, url, callback) {
+let jsonCaller = function (meathod, url, callbackFn) {
   let xhr = new XMLHttpRequest()
 
   xhr.onload = function () {
-    if (this.status === 200) {
-      try {
-        let responsObj = JSON.parse(this.responseText)
-        callback(responsObj)
-      }
-      catch {
-        console.warn('JSON not parsed')
-      }
-    }
-    else {
-      console.warn('JSON not found')
+    if (xhr.status !== 200) {
+        console.log('Oops! Something went wrong.');
+        callbackFn(false);
+    } else {
+        // try {
+          callbackFn(JSON.parse(xhr.response));
+        // } catch (err) {
+        //   console.log('JSON not parsed')
+        //   callbackFn(false)
+        // }
     }
   }
 

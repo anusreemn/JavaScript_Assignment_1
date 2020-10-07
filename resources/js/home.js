@@ -2,7 +2,6 @@ import utils from './utils.js'
 import tableFn from "./table.js" 
 
 let paraHeight
-let headerObj, contentObj
 
 
 /*--------------- Home page content loading section ---------------*/
@@ -11,8 +10,8 @@ const imageArea = document.querySelector('.image-area')
 
 utils.jsonCaller('get', 'resources/json/homepage.json', function (object) {
   para.textContent = object.content
-  // let headerObj = object.table
-  headerObj = object.table 
+
+  let headers = object.table 
 
   const image = document.createElement('img')
   image.src = object.image
@@ -20,61 +19,31 @@ utils.jsonCaller('get', 'resources/json/homepage.json', function (object) {
   imageArea.appendChild(image)
 
   paraResize()
-  loadTable(headerObj)
+  loadTable(headers)
 })
 
 
 4
 /*--------------- Table loading section ---------------*/
-let tableHeader = document.querySelector("thead") 
-let tableBody = document.querySelector('tbody')
-function loadTable(headerObj) {
+function loadTable(headers) {
 
-  if (headerObj) {  // Checks whether a tale exist
+  if (headers) {  // Checks whether a tale exist
 
+    const tableContainer = document.querySelector('#table-wrapper');
+    const table = tableContainer.appendChild(document.createElement('table'))
+    table.appendChild(document.createElement('thead'))
+    table.appendChild(document.createElement('tbody'))
 
     // Table header loading
-    tableFn.tableHeadLoader(headerObj, "asc", function (headRow) {
-      tableHeader.appendChild(headRow) 
-    }) 
+    tableFn.tableHeadLoader(headers) 
 
     // Table content loading
-    utils.jsonCaller("get", "resources/json/vacancies.json", function (object) {
-      contentObj = object 
-      tableFn.tableBodyLoader(tableBody, headerObj, contentObj)
+    utils.jsonCaller("get", "resources/json/vacancies.json", function (tableData) {
+      tableFn.tableBodyLoader(tableData)
     }) 
 
   }
 }
-
-// Event listener for sorting
-tableHeader.addEventListener("click", function (e) {
-  let header = e.target 
-  let clickedId = header.id
-  tableFn.tableSort(header, contentObj, function (newContentList, nextOrder) {
-    // Table header (re)loading
-    tableFn.tableHeadLoader(headerObj, nextOrder, function (headRow) {
-      tableHeader.appendChild(headRow) 
-
-      // Hide icons based on sort order
-      let upArrow = document.querySelector(`.${clickedId}UpArrow`)
-      let downArrow = document.querySelector(`.${clickedId}DownArrow`) 
-      if (nextOrder == 'asc') {
-        upArrow.style.visibility = 'hidden'
-        downArrow.style.visibility = "visible" 
-      }
-      else {
-        upArrow.style.visibility = "visible" 
-        downArrow.style.visibility = "hidden" 
-      }
-    }) 
-
-    // Table body (re)loading
-    tableFn.tableBodyLoader(tableBody, headerObj, newContentList) 
-  }) 
-}) 
-
-
 
 /*--------------- Paragraph resize and read more section ---------------*/
 const readMoreBtn = document.querySelector('.read-more')

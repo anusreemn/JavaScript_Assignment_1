@@ -231,6 +231,22 @@ td:last-child{ text-align: center; }
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
+table th[data-sortable="true"] .up,
+table th[data-sortable="true"] .down {
+  visibility: visible;
+}
+table th.asc .up {
+  visibility: visible;
+}
+table th.asc .down {
+  visibility: hidden;
+}
+table th.desc .up {
+  visibility: hidden;
+}
+table th.desc .down {
+  visibility: visible;
+}
 
 table button,
 .read-more,
