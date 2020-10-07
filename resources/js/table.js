@@ -60,7 +60,7 @@ let bindSortToThead = function (tableHeader) {
     tableSort(header, function (newContentList) {
       // determine current clicked header sort classname
       let nextOrder = "asc";
-      if (header.className == "asc") {
+      if (!header.className || header.className == "asc") {
         nextOrder = "desc" 
       }
       // reset all header sort classnames
@@ -145,17 +145,31 @@ let tableBodyLoader = function (contentList) {
 
 
 /*------------------- Table sorting fn ------------------------*/
-let sortData = function(data, sortKey) {
-  const newData = data.sort(function(a, b) {
+
+
+let sortData = function(data, sortKey, isNumber) {
+  const sortNumber = function(a, b) {
     return a[sortKey] - b[sortKey]
-  })
+  }
+  const sortString = function(a, b) {
+    if (a[sortKey] > b[sortKey]) return 1;
+    else if (a[sortKey] < b[sortKey]) return -1;
+    else return 0;
+  }
+  const newData = data.sort(isNumber ? sortNumber : sortString)
   return newData;
 }
 
-let reverseData = function(data, sortKey) {
-  const newData = data.reverse(function(a, b) {
+let reverseData = function(data, sortKey, isNumber) {
+  const sortNumber = function(a, b) {
     return a[sortKey] - b[sortKey]
-  })
+  }
+  const sortString = function(a, b) {
+    if (a[sortKey] > b[sortKey]) return 1;
+    else if (a[sortKey] < b[sortKey]) return -1;
+    else return 0;
+  }
+  const newData = data.reverse(isNumber ? sortNumber : sortString)
   return newData;
 }
 
@@ -163,10 +177,11 @@ let tableSort = function(header, callback) {
   if (header.dataset.sortable) {
     // See if the data is sortable and do below
     let newContentList = [];
-    if (header.className == 'asc') {
-      newContentList = sortData(tableContent, header.id);
-    } else {
-      newContentList = reverseData(tableContent, header.id);
+    const isNumber = header.dataset.type == "number";
+    if (!header.className || header.className == 'asc') {
+      newContentList = sortData(tableContent, header.id, isNumber);
+    } else if (header.className == 'desc') {
+      newContentList = reverseData(tableContent, header.id, isNumber);
     }
     callback(newContentList);
   } else {
