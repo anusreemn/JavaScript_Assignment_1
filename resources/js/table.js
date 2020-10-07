@@ -48,6 +48,7 @@ let tableHeadLoader = function(headerList,order,callback){
 let tableBodyLoader = function(tableBody,headerList,contentList){
   if(contentList){  // Checks if any content present
 
+
     for(let contentValue of contentList){
       let rowElement = document.createElement("tr")
 
