@@ -22,10 +22,10 @@ registerBtn.addEventListener('click', function () {
   validateFields(forValidation)
 
   if (isValid) {
-    let confirmField = document.querySelector(`#${passwordInput.id}-confirm`);
+    let confirmField = document.querySelector(`#${passwordInput.id}-confirm`) 
     if (confirmPassword(passwordInput)) {
       if (terms.checked) {
-        clearError(confirmField);
+        clearError(confirmField) 
         let user = {
           firstname: firstnameInput.value,
           lastname: lastnameInput.value,
@@ -41,13 +41,13 @@ registerBtn.addEventListener('click', function () {
       }
     }
     else {
-      setError(confirmField, 'Passwords does not match.');
-      isValid = true;
+      setError(confirmField, 'Passwords does not match.') 
+      isValid = true 
     }
 
   } else {
-    console.log('Not Valid');
-    isValid = true;
+    console.log('Not Valid') 
+    isValid = true 
   }
 
 })
@@ -64,11 +64,11 @@ function validateFields(fields) {
 function validate(field) {
 
   if (field.required && field.value.length == 0) {
-    setError(field, `${field.name} cannot be blank.`);
+    setError(field, `${field.name} cannot be blank.`) 
   }
   else {
     if (field.name == 'First name' || field.name == 'Last name') {
-      validateName(field);
+      validateName(field) 
     }
     else if (field.name == 'Password') {
       validatePassword(field)
@@ -85,15 +85,15 @@ function validate(field) {
 // Validate name
 function validateName(input) {
   if (input.value.length < input.minLength) {
-    setError(input, `${input.name} is too short.`);
-    return false;
+    setError(input, `${input.name} is too short.`) 
+    return false 
   } else {
     if (!isName(input.value)) {
-      setError(input, 'Name is invalid!');
-      return false;
+      setError(input, 'Name is invalid!') 
+      return false 
     } else {
-      clearError(input);
-      return true;
+      clearError(input) 
+      return true 
     }
   }
 }
@@ -109,19 +109,19 @@ function validatePassword(input) {
       setError(
         input,
         'password should contain at least one number and one special character'
-      );
-      return false;
+      ) 
+      return false 
     }
     else {
-      clearError(input);
-      return true;
+      clearError(input) 
+      return true 
     }
   }
 }
 
 // Confirm password
 function confirmPassword(input) {
-  let secondPass = document.querySelector(`#${input.id}-confirm`);
+  let secondPass = document.querySelector(`#${input.id}-confirm`) 
   if (input.value == secondPass.value) {
     return true
   }
@@ -132,10 +132,10 @@ function confirmPassword(input) {
 
 // Dob validation
 function validateDate(input) {
-  let d = new Date();
-  // console.log(d.getFullYear());
-  // console.log(d.getMonth() + 1);
-  // console.log(d.getDate());
+  let d = new Date() 
+  // console.log(d.getFullYear()) 
+  // console.log(d.getMonth() + 1) 
+  // console.log(d.getDate()) 
 
   let dateInput = input.value.split("-")
   let userYear = parseInt(dateInput[0])
@@ -147,11 +147,11 @@ function validateDate(input) {
   }
   else if (userYear == d.getFullYear()) {
     if (userMonth > d.getMonth() + 1 || userMonth > `0${d.getMonth() + 1}`) {
-      setError(input, "You are not born yet!");
+      setError(input, "You are not born yet!") 
     }
     else if (userMonth == d.getMonth() + 1 || userMonth == `0${d.getMonth() + 1}`) {
       if (userDay >= d.getDate() || userDay >= `0${d.getDate()}`) {
-        setError(input, "You are not born yet!");
+        setError(input, "You are not born yet!") 
       }
       else {
         clearError(input)
@@ -175,7 +175,7 @@ function validateDate(input) {
   // }
 
 
-  // console.log(`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`);
+  // console.log(`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`) 
 
 }
 
@@ -187,7 +187,7 @@ function isName(name) {
 }
 
 function isPass(password) {
-  return /^[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password);
+  return /^[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password) 
   // Reffer: https://stackoverflow.com/questions/12090077/javascript-regular-expression-password-validation-having-special-characters
 }
 dateofbirthInput.addEventListener('focus', function () {
@@ -196,7 +196,7 @@ dateofbirthInput.addEventListener('focus', function () {
 
 dateofbirthInput.addEventListener("blur", function () {
   this.type = 'text'
-});
+}) 
 
 // Setting the error
 function setError(input, msg) {
@@ -217,8 +217,8 @@ function clearError(input) {
 // Validate on blur
 for (let each of forValidation) {
   each.addEventListener('blur', function (e) {
-    validate(e.target);
-  });
+    validate(e.target) 
+  }) 
 }
 
 // Clear error on keydown
@@ -237,7 +237,7 @@ function createUser(firstname, lastname, dob, gender, password) {
     password: password
   }
 
-  console.log(userObj);
+  console.log(userObj) 
   utils.storeObjects('users', userObj)
 }
 
@@ -253,11 +253,11 @@ function popup() {
 
 function disableScroll() {
   // Get the current page scroll position
-  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop 
   let scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
   // if any scroll is attempted, set this to the previous value
   window.onscroll = function () {
-    window.scrollTo(scrollLeft, scrollTop);
+    window.scrollTo(scrollLeft, scrollTop) 
   }
 }
 

@@ -1,5 +1,5 @@
-import utils from './utils.js';
-import tableFn from "./table.js";
+import utils from './utils.js' 
+import tableFn from "./table.js" 
 
 var paraHeight
 let headerObj, contentObj
@@ -12,11 +12,11 @@ const imageArea = document.querySelector('.image-area')
 utils.jsonCaller('get', 'resources/json/homepage.json', function (object) {
   para.textContent = object.content
   // let headerObj = object.table
-  headerObj = object.table;
+  headerObj = object.table 
 
   const image = document.createElement('img')
   image.src = object.image
-  image.className += 'content-img';
+  image.className += 'content-img' 
   imageArea.appendChild(image)
 
   paraResize()
@@ -26,7 +26,7 @@ utils.jsonCaller('get', 'resources/json/homepage.json', function (object) {
 
 4
 /*--------------- Table loading section ---------------*/
-let tableHeader = document.querySelector("thead");
+let tableHeader = document.querySelector("thead") 
 let tableBody = document.querySelector('tbody')
 function loadTable(headerObj) {
 
@@ -35,44 +35,44 @@ function loadTable(headerObj) {
 
     // Table header loading
     tableFn.tableHeadLoader(headerObj, "asc", function (headRow) {
-      tableHeader.appendChild(headRow);
-    });
+      tableHeader.appendChild(headRow) 
+    }) 
 
     // Table content loading
     utils.jsonCaller("get", "resources/json/vacancies.json", function (object) {
-      contentObj = object;
+      contentObj = object 
       tableFn.tableBodyLoader(tableBody, headerObj, contentObj)
-    });
+    }) 
 
   }
 }
 
 // Event listener for sorting
 tableHeader.addEventListener("click", function (e) {
-  let header = e.target;
+  let header = e.target 
   let clickedId = header.id
   tableFn.tableSort(header, contentObj, function (newContentList, nextOrder) {
     // Table header (re)loading
     tableFn.tableHeadLoader(headerObj, nextOrder, function (headRow) {
-      tableHeader.appendChild(headRow);
+      tableHeader.appendChild(headRow) 
 
       // Hide icons based on sort order
       let upArrow = document.querySelector(`.${clickedId}UpArrow`)
-      let downArrow = document.querySelector(`.${clickedId}DownArrow`);
+      let downArrow = document.querySelector(`.${clickedId}DownArrow`) 
       if (nextOrder == 'asc') {
         upArrow.style.visibility = 'hidden'
-        downArrow.style.visibility = "visible";
+        downArrow.style.visibility = "visible" 
       }
       else {
-        upArrow.style.visibility = "visible";
-        downArrow.style.visibility = "hidden";
+        upArrow.style.visibility = "visible" 
+        downArrow.style.visibility = "hidden" 
       }
-    });
+    }) 
 
     // Table body (re)loading
-    tableFn.tableBodyLoader(tableBody, headerObj, newContentList);
-  });
-});
+    tableFn.tableBodyLoader(tableBody, headerObj, newContentList) 
+  }) 
+}) 
 
 
 
@@ -84,7 +84,7 @@ const readLessBtn = document.querySelector('.read-less')
 function paraResize() {
   paraHeight = para.offsetHeight
   if (paraHeight > 197) {
-    readLess();
+    readLess() 
   } else {
     para.style.height = 'auto'
     readMoreBtn.style.display = 'none'

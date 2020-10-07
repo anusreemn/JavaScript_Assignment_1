@@ -24,7 +24,7 @@ let storeObjects = function (key, value) {
   let existingValue = JSON.parse(localStorage.getItem(key))
   existingValue.push(value)
   let newValue = JSON.stringify(existingValue)
-  localStorage.setItem(key, newValue);
+  localStorage.setItem(key, newValue) 
 }
 
 

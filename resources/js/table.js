@@ -3,7 +3,7 @@
 
 let tableHeadLoader = function (headerList, order, callback) {
   if (headerList) {  // Checks whether a table exists.
-    let headRow = document.createElement("tr");
+    let headRow = document.createElement("tr") 
 
     for (let headValue of headerList) {
       let headElement = document.createElement("th")
@@ -16,28 +16,28 @@ let tableHeadLoader = function (headerList, order, callback) {
       }
 
       // Adding text content and data attribute to 'th' element
-      headElement.textContent = headValue.tittle;
-      headElement.setAttribute("data-type", headValue.type);
-      headElement.setAttribute("data-sortable", headValue.sortable);
-      headElement.id = headValue.id;
+      headElement.textContent = headValue.tittle 
+      headElement.setAttribute("data-type", headValue.type) 
+      headElement.setAttribute("data-sortable", headValue.sortable) 
+      headElement.id = headValue.id 
 
       // Adding up and down arrows
       if (headValue.sortable == true) {
 
         let upArrow = document.createElement('i')
-        upArrow.className = `${headValue.id}UpArrow up Arrow`;
+        upArrow.className = `${headValue.id}UpArrow up Arrow` 
 
         let downArrow = document.createElement('i')
-        downArrow.className = `${headValue.id}DownArrow down Arrow`;
+        downArrow.className = `${headValue.id}DownArrow down Arrow` 
 
         headElement.appendChild(upArrow)
-        headElement.appendChild(downArrow);
+        headElement.appendChild(downArrow) 
       }
 
-      headRow.appendChild(headElement);
+      headRow.appendChild(headElement) 
     }
 
-    callback(headRow);
+    callback(headRow) 
 
   }
 }
@@ -53,38 +53,38 @@ let tableBodyLoader = function (tableBody, headerList, contentList) {
       let rowElement = document.createElement("tr")
 
       for (let headerValue of headerList) {
-        let columnElement = document.createElement("td");
-        let key = headerValue.id;
-        let cellValue = contentValue[key];
+        let columnElement = document.createElement("td") 
+        let key = headerValue.id 
+        let cellValue = contentValue[key] 
 
         if (headerValue.type == "link") {
-          let link = document.createElement("a");
-          link.href = cellValue;
-          link.textContent = "Link";
-          columnElement.appendChild(link);
+          let link = document.createElement("a") 
+          link.href = cellValue 
+          link.textContent = "Link" 
+          columnElement.appendChild(link) 
         } else if (headerValue.type == "button") {
           if (contentValue.status == "open") {
-            let btn = document.createElement("button");
-            btn.textContent = "Apply Now";
+            let btn = document.createElement("button") 
+            btn.textContent = "Apply Now" 
             btn.onclick = function (e) {
-              alert("Applies Successfully");
-            };
-            columnElement.appendChild(btn);
+              alert("Applies Successfully") 
+            } 
+            columnElement.appendChild(btn) 
           } else {
-            columnElement.textContent = " - ";
+            columnElement.textContent = " - " 
           }
         } else if (headerValue.type == "number" || headerValue.type == "date") {
-          columnElement.style.textAlign = "right";
-          columnElement.textContent = cellValue;
-          columnElement.className = key;
+          columnElement.style.textAlign = "right" 
+          columnElement.textContent = cellValue 
+          columnElement.className = key 
         } else {
-          columnElement.textContent = cellValue;
-          columnElement.className = key;
+          columnElement.textContent = cellValue 
+          columnElement.className = key 
         }
 
-        rowElement.appendChild(columnElement);
+        rowElement.appendChild(columnElement) 
       }
-      tableBody.appendChild(rowElement);
+      tableBody.appendChild(rowElement) 
     }
   }
   else {
@@ -102,24 +102,24 @@ let tableSort = function (header, contentList, callback) {
     header.dataset["sortable"] == "true" &&
     header.dataset["type"] == "number"
   ) {
-    let element = document.querySelectorAll(`.${header.id}`);
-    let valueList = [];
+    let element = document.querySelectorAll(`.${header.id}`) 
+    let valueList = [] 
 
     for (let each of element) {
-      valueList.push(parseInt(each.textContent));
+      valueList.push(parseInt(each.textContent)) 
     }
 
     if (header.className == "asc") {
-      var nextOrder = "des";
-      valueList.sort((a, b) => a - b);
-      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder);
-      callback(newContentList, nextOrder);
+      var nextOrder = "des" 
+      valueList.sort((a, b) => a - b) 
+      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder) 
+      callback(newContentList, nextOrder) 
 
     } else {
-      var nextOrder = "asc";
-      valueList.reverse((a, b) => a - b);
-      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder);
-      callback(newContentList, nextOrder);
+      var nextOrder = "asc" 
+      valueList.reverse((a, b) => a - b) 
+      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder) 
+      callback(newContentList, nextOrder) 
     }
   }
   // See if the data is sortable strings
@@ -127,23 +127,23 @@ let tableSort = function (header, contentList, callback) {
     header.dataset["sortable"] == "true" &&
     header.dataset["type"] == "string"
   ) {
-    let element = document.querySelectorAll(`.${header.id}`);
-    let valueList = [];
+    let element = document.querySelectorAll(`.${header.id}`) 
+    let valueList = [] 
 
     for (let each of element) {
-      valueList.push(each.textContent);
+      valueList.push(each.textContent) 
     }
 
     if (header.className == "asc") {
-      var nextOrder = "des";
-      valueList.sort();
-      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder);
-      callback(newContentList, nextOrder);
+      var nextOrder = "des" 
+      valueList.sort() 
+      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder) 
+      callback(newContentList, nextOrder) 
     } else {
-      var nextOrder = "asc";
-      valueList.reverse();
-      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder);
-      callback(newContentList, nextOrder);
+      var nextOrder = "asc" 
+      valueList.reverse() 
+      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder) 
+      callback(newContentList, nextOrder) 
     }
   }
   // See if the data is sortable date (string type)
@@ -151,27 +151,27 @@ let tableSort = function (header, contentList, callback) {
     header.dataset["sortable"] == "true" &&
     header.dataset["type"] == "date"
   ) {
-    let element = document.querySelectorAll(`.${header.id}`);
-    let valueList = [];
+    let element = document.querySelectorAll(`.${header.id}`) 
+    let valueList = [] 
 
     for (let each of element) {
-      valueList.push(each.textContent);
+      valueList.push(each.textContent) 
     }
 
     if (header.className == "asc") {
-      var nextOrder = "des";
-      valueList.sort();
-      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder);
-      callback(newContentList, nextOrder);
+      var nextOrder = "des" 
+      valueList.sort() 
+      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder) 
+      callback(newContentList, nextOrder) 
     } else {
-      let nextOrder = "asc";
-      valueList.reverse();
-      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder);
-      callback(newContentList, nextOrder);
+      let nextOrder = "asc" 
+      valueList.reverse() 
+      var newContentList = newContentCreator(valueList, contentList, header.id, nextOrder) 
+      callback(newContentList, nextOrder) 
     }
 
   } else {
-    console.log("Not sortable");
+    console.log("Not sortable") 
   }
 }
 
@@ -179,21 +179,21 @@ let tableSort = function (header, contentList, callback) {
 
 // New table according to sort
 function newContentCreator(valueList, contentList, key, nextOrder) {
-  let tableBody = document.querySelector("tbody");
-  let tableHeader = document.querySelector("thead");
+  let tableBody = document.querySelector("tbody") 
+  let tableHeader = document.querySelector("thead") 
 
-  let newContentObj = [];
+  let newContentObj = [] 
 
   for (let values of valueList) {
     for (let content of contentList) {
       if (values == content[key]) {
-        newContentObj.push(content);
+        newContentObj.push(content) 
       }
     }
   }
-  removeChildNode(tableBody);
-  removeChildNode(tableHeader);
-  return newContentObj;
+  removeChildNode(tableBody) 
+  removeChildNode(tableHeader) 
+  return newContentObj 
 }
 
 // Remove table content
@@ -205,5 +205,5 @@ function removeChildNode(parent) {
 
 
 
-let tableFn = { tableHeadLoader, tableBodyLoader, tableSort };
+let tableFn = { tableHeadLoader, tableBodyLoader, tableSort } 
 export default tableFn

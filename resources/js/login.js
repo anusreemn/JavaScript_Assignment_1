@@ -6,10 +6,10 @@ let loggedinUser = localStorage.getItem('loggedin')
 if (loggedinUser === null) {
 
   if (userValue === null) {
-    let value = '[]';
-    localStorage.setItem('users', value);
+    let value = '[]' 
+    localStorage.setItem('users', value) 
     loginAction()
-    // location.href = '/register.html';
+    // location.href = '/register.html' 
   } else {
     loginAction()
   }
@@ -20,8 +20,8 @@ else {
 }
 
 function loginAction() {
-  let fields = document.querySelectorAll('input');
-  let loginBtn = document.querySelector('#login-button');
+  let fields = document.querySelectorAll('input') 
+  let loginBtn = document.querySelector('#login-button') 
 
   loginBtn.addEventListener('click', function () {
     utils.retrieveObjects('users', function (data) {
@@ -33,8 +33,8 @@ function loginAction() {
       else {
         for (let user of data) {
           if (fields[0].value == user.firstname && fields[1].value == user.password) {
-            clearError(fields[1]);
-            let nameOfUser = `${user.firstname} ${user.lastname}`;
+            clearError(fields[1]) 
+            let nameOfUser = `${user.firstname} ${user.lastname}` 
             localStorage.setItem('loggedin', nameOfUser)
             location.href = '/home.html'
           }
@@ -45,14 +45,14 @@ function loginAction() {
         }
       }
 
-    });
-  });
+    }) 
+  }) 
 }
 
 
 // Setting the error
 function setError(msg) {
-  const errorField = document.querySelector(".login-error");
+  const errorField = document.querySelector(".login-error") 
   errorField.textContent = msg
 }
 

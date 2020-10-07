@@ -2,7 +2,7 @@ import utils from './utils.js'
 
 window.onload = (event) => {
 
-  var obj;
+  var obj 
 
   menuLoader()
   welcomeText()
@@ -11,7 +11,7 @@ window.onload = (event) => {
     var welcomeTextBox = document.querySelector('.welcome-text')
     var logoutBtn = document.querySelector('.logout')
 
-    welcomeTextBox.textContent = `Hi ${localStorage.getItem('loggedin')}`;
+    welcomeTextBox.textContent = `Hi ${localStorage.getItem('loggedin')}` 
     logoutBtn.addEventListener('click', function () {
       localStorage.removeItem('loggedin')
       location.href = '/login.html'
@@ -47,15 +47,15 @@ window.onload = (event) => {
 
     // Function for creating menu elements
     function createMenu(content, link, status) {
-      const menuElement = document.createElement('li');
-      const menuLink = document.createElement('a');
-      menuLink.href = '#';
+      const menuElement = document.createElement('li') 
+      const menuLink = document.createElement('a') 
+      menuLink.href = '#' 
       menuLink.setAttribute('data-link', link)
       menuLink.setAttribute('data-status', status)
-      menuLink.className += 'menu-link';
-      menuLink.textContent = content;
-      menuElement.appendChild(menuLink);
-      return menuElement;
+      menuLink.className += 'menu-link' 
+      menuLink.textContent = content 
+      menuElement.appendChild(menuLink) 
+      return menuElement 
     }
 
 
@@ -80,31 +80,31 @@ window.onload = (event) => {
 
 
   function createPost(tittle, imgLink) {
-    const postElement = document.createElement('li');
-    const postLink = document.createElement('a');
+    const postElement = document.createElement('li') 
+    const postLink = document.createElement('a') 
 
-    const postLinkDiv = document.createElement('div');
-    postLinkDiv.className += 'post-image-div';
+    const postLinkDiv = document.createElement('div') 
+    postLinkDiv.className += 'post-image-div' 
 
-    const postText = document.createElement('p');
-    postText.className += 'post-info';
-    postText.textContent = tittle;
+    const postText = document.createElement('p') 
+    postText.className += 'post-info' 
+    postText.textContent = tittle 
 
-    const postImg = document.createElement('img');
-    postImg.src = imgLink;
+    const postImg = document.createElement('img') 
+    postImg.src = imgLink 
 
-    postLinkDiv.appendChild(postText);
-    postLinkDiv.appendChild(postImg);
-    postLink.appendChild(postLinkDiv);
-    postElement.appendChild(postLink);
+    postLinkDiv.appendChild(postText) 
+    postLinkDiv.appendChild(postImg) 
+    postLink.appendChild(postLinkDiv) 
+    postElement.appendChild(postLink) 
 
-    return postElement;
+    return postElement 
   }
 
   // Search filter
   const searchBar = document.querySelector("#search")
   const mainPara = document.querySelector("#blog-paragraph")
-  let backupContent = mainPara.textContent;
+  let backupContent = mainPara.textContent 
   // const mainPara = document.querySelector(".content")
   searchBar.addEventListener('keyup', function () {
     let value = searchBar.value
@@ -123,15 +123,15 @@ window.onload = (event) => {
 
 
   // Drop down menu in mobile view
-  const dropDownButton = document.querySelector('.drop-down-button');
+  const dropDownButton = document.querySelector('.drop-down-button') 
   dropDownButton.addEventListener('click', function () {
-    const navigation = document.querySelector('.navigation');
+    const navigation = document.querySelector('.navigation') 
     if (navigation.style.display === 'none') {
-      navigation.style.display = 'block';
+      navigation.style.display = 'block' 
     } else {
-      navigation.style.display = 'none';
+      navigation.style.display = 'none' 
     }
-  });
+  }) 
 }
 
 
